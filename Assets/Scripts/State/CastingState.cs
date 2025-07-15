@@ -11,9 +11,10 @@ public class CastingState : IFishingState
     readonly FishingLine line;
     readonly Button castBtn, reelBtn;
     GameObject bob;
+    readonly RodAnimation rodAnim;
 
     public CastingState(FishingController fc, Transform rodTip, Transform target, GameObject prefab,
-        BobberMotion motion, FishingLine line, Button cast, Button reel)
+        BobberMotion motion, FishingLine line,RodAnimation rodAnim, Button cast, Button reel)
     {
         this.fc = fc;
         this.rodTip = rodTip;
@@ -23,6 +24,7 @@ public class CastingState : IFishingState
         this.line = line;
         castBtn = cast;
         reelBtn = reel;
+        this.rodAnim = rodAnim;
     }
 
     public void OnEnter()
@@ -42,6 +44,9 @@ public class CastingState : IFishingState
 
     IEnumerator Flow()
     {
+        Coroutine castAnimCo = null;
+        if (rodAnim)
+            castAnimCo = fc.StartCoroutine(rodAnim.Play(RodAnimation.Clip.Cast));
         bob = Object.Instantiate(prefab, rodTip.position, Quaternion.identity);
         fc.SetBobber(bob);
         line.SetTargets(rodTip, bob.transform);

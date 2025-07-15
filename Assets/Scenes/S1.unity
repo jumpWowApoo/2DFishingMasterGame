@@ -345,6 +345,8 @@ GameObject:
   - component: {fileID: 320847546}
   - component: {fileID: 320847545}
   - component: {fileID: 320847544}
+  - component: {fileID: 320847547}
+  - component: {fileID: 320847548}
   m_Layer: 0
   m_Name: FishingRod
   m_TagString: Untagged
@@ -430,7 +432,7 @@ Transform:
   m_Children:
   - {fileID: 662141955}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: -0.288, y: 0, z: 9.168}
 --- !u!120 &320847543
 LineRenderer:
@@ -548,11 +550,11 @@ MonoBehaviour:
   rodTip: {fileID: 662141955}
   targetPos: {fileID: 1477347172}
   bobberPrefab: {fileID: 2219346982892217821, guid: a9779f8fc0a8d2649bc5330f259a26f5, type: 3}
-  waitRange: {x: 5, y: 10}
+  waitRange: {x: 2, y: 5}
   biteAutoTime: 3
   successWindow: 2
-  baitAnimator: {fileID: 0}
   baitAnimLen: 1
+  rodAnim: {fileID: 320847547}
 --- !u!114 &320847545
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -579,6 +581,44 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e10aba8d954921459e6944da7bbcc51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &320847547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 320847537}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e9a63eb0d9e08640800ece5f645fb19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  idleState: Rod_Idle
+  castState: Rod_Cast
+  reelState: Rod_ReelIn
+  idleLen: 0
+  castLen: 0.5
+  reelLen: 0.01
+--- !u!95 &320847548
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 320847537}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 68c82b6226fd9c14ba45aa1105df94e1, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &361520629
 GameObject:
   m_ObjectHideFlags: 0
@@ -674,7 +714,7 @@ RectTransform:
   - {fileID: 933030281}
   - {fileID: 218504880}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1096,7 +1136,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!1 &1303664589
 GameObject:
@@ -1434,7 +1474,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1477347171
 GameObject:
@@ -1466,7 +1506,52 @@ Transform:
   m_Children:
   - {fileID: 853559218}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1480230436
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1480230438}
+  - component: {fileID: 1480230437}
+  m_Layer: 0
+  m_Name: "\u72C0\u614B\u6E2C\u8A66\u6587\u5B57"
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1480230437
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1480230436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2e3a5ccab9c9434bb7a6f81b2470697, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controller: {fileID: 320847544}
+--- !u!4 &1480230438
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1480230436}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -26.744102, y: -8.204046, z: 19.927607}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2029671373
 GameObject:
@@ -1564,5 +1649,5 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}

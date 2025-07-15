@@ -19,19 +19,17 @@ public class FishingController : MonoBehaviour
         Baiting
     }
 
-    [Header("UI / Refs")] 
-    public Button castButton;
+    [Header("UI / Refs")] public Button castButton;
     public Button reelButton;
     public Transform rodTip;
     public Transform targetPos;
     public GameObject bobberPrefab;
-    
-    [Header("Params")] 
-    public Vector2 waitRange = new(5, 10);
+
+    [Header("Params")] public Vector2 waitRange = new(5, 10);
     public float biteAutoTime = 3f;
     public float successWindow = 2f;
-    [SerializeField] Animator baitAnimator;
     [SerializeField] float baitAnimLen = 1.0f;
+    [SerializeField] RodAnimation rodAnim;
 
     readonly Dictionary<StateID, IFishingState> map = new();
     IFishingState current;
@@ -39,17 +37,22 @@ public class FishingController : MonoBehaviour
     public FishingLine Line { get; private set; }
     public GameObject CurrentBobber { get; private set; }
     public event Action<bool> OnResult;
+    public FishingState FishingStateRef { get; private set; } // 新增
 
     void Start()
     {
         Line = GetComponent<FishingLine>();
         var mot = GetComponent<BobberMotion>();
-        map[StateID.Idle] = new IdleState(this, castButton, reelButton);
+        map[StateID.Idle] = new IdleState(this, castButton, reelButton,rodAnim);
         map[StateID.Casting] =
-            new CastingState(this, rodTip, targetPos, bobberPrefab, mot, Line, castButton, reelButton);
-        map[StateID.Fishing] = new FishingState(this, waitRange,reelButton);
+            new CastingState(this, rodTip, targetPos, bobberPrefab, mot, Line, rodAnim, castButton, reelButton);
+        var fs = new FishingState(this, waitRange, reelButton);
+        FishingStateRef = fs; // GUI 用
+        map[StateID.Fishing] = fs; // 導演切換用
         map[StateID.FishBite] = new FishBiteState(this, biteAutoTime, successWindow);
         map[StateID.Baiting] = new BaitingState(this);
+        map[StateID.ReelIn] =
+            new ReelInState(this, Line, null, false, false, castButton, reelButton, rodAnim);
         SwitchTo(StateID.Idle);
     }
 
@@ -69,7 +72,7 @@ public class FishingController : MonoBehaviour
     public void BeginReel(bool success, bool needBait)
     {
         current?.OnExit();
-        current = new ReelInState(this, Line, CurrentBobber, success, needBait, castButton, reelButton);
+        current = new ReelInState(this, Line, CurrentBobber, success, needBait, castButton, reelButton,rodAnim);
         CurrentID = StateID.ReelIn;
         current.OnEnter();
     }

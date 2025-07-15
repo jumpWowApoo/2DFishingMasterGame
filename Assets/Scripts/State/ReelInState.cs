@@ -9,29 +9,32 @@ using UnityEngine.UI;
 public class ReelInState : IFishingState
 {
     readonly FishingController fc;
-    readonly FishingLine       line;
-    readonly GameObject        bobber;
-    readonly bool              success;
-    readonly bool              needBait;
-    readonly Button            castBtn;
-    readonly Button            reelBtn;
+    readonly FishingLine line;
+    readonly GameObject bobber;
+    readonly bool success;
+    readonly bool needBait;
+    readonly Button castBtn;
+    readonly Button reelBtn;
+    readonly RodAnimation rodAnim;
 
     public ReelInState(
         FishingController fc,
-        FishingLine       line,
-        GameObject        bobber,
-        bool              success,
-        bool              needBait,
-        Button            castBtn,
-        Button            reelBtn)
+        FishingLine line,
+        GameObject bobber,
+        bool success,
+        bool needBait,
+        Button castBtn,
+        Button reelBtn,
+        RodAnimation rodAnim)
     {
-        this.fc       = fc;
-        this.line     = line;
-        this.bobber   = bobber;
-        this.success  = success;
+        this.fc = fc;
+        this.line = line;
+        this.bobber = bobber;
+        this.success = success;
         this.needBait = needBait;
-        this.castBtn  = castBtn;
-        this.reelBtn  = reelBtn;
+        this.castBtn = castBtn;
+        this.reelBtn = reelBtn;
+        this.rodAnim = rodAnim;
     }
 
     public void OnEnter()
@@ -41,12 +44,20 @@ public class ReelInState : IFishingState
         fc.StartCoroutine(ReelFlow());
     }
 
-    public void Tick() { }
-    public void OnExit() { }
+    public void Tick()
+    {
+    }
+
+    public void OnExit()
+    {
+    }
 
     IEnumerator ReelFlow()
     {
-        yield return new WaitForSeconds(0.3f);   // 收竿動畫時長佔位
+        Coroutine castAnimCo = null;
+        if (rodAnim)
+            castAnimCo = fc.StartCoroutine(rodAnim.Play(RodAnimation.Clip.Reel));
+        yield return new WaitForSeconds(0.3f); // 收竿動畫時長佔位
 
         line.Show(false);
         if (bobber)

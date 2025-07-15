@@ -2,11 +2,15 @@ using UnityEngine;
 using UnityEngine.UI;
 public class FishingState : IFishingState
 {
+    public float WaitTotal      { get; private set; }   // 本輪總秒數
+    public float WaitRemaining  => _timer;               // 尚餘秒
+    public float WaitElapsed    => WaitTotal - _timer;   // 已過秒
+    
     readonly FishingController fc;
     readonly Vector2            rng;
     readonly Button             reelBtn;
 
-    float timer;
+    float _timer;
 
     public FishingState(FishingController fc, Vector2 rng, Button reelBtn)
     {
@@ -17,14 +21,15 @@ public class FishingState : IFishingState
 
     public void OnEnter()
     {
-        timer = Random.Range(rng.x, rng.y);
+        _timer = Random.Range(rng.x, rng.y);
+        WaitTotal = _timer;
         reelBtn.onClick.AddListener(OnEarlyReel);
     }
 
     public void Tick()
     {
-        timer -= Time.deltaTime;
-        if (timer <= 0)
+        _timer -= Time.deltaTime;
+        if (_timer <= 0)
             fc.SwitchTo(FishingController.StateID.FishBite);
     }
 
