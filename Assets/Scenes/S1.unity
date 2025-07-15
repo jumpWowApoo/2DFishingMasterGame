@@ -219,9 +219,10 @@ GameObject:
   - component: {fileID: 320847540}
   - component: {fileID: 320847539}
   - component: {fileID: 320847538}
-  - component: {fileID: 320847542}
-  - component: {fileID: 320847544}
   - component: {fileID: 320847543}
+  - component: {fileID: 320847546}
+  - component: {fileID: 320847545}
+  - component: {fileID: 320847544}
   m_Layer: 0
   m_Name: FishingRod
   m_TagString: Untagged
@@ -307,27 +308,8 @@ Transform:
   m_Children:
   - {fileID: 662141955}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: -0.288, y: 0, z: 9.168}
---- !u!114 &320847542
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 320847537}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 82f327316a14f294ea5cf26f4c766f9d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  castButton: {fileID: 933030282}
-  _buttobj: {fileID: 933030280}
-  rodTip: {fileID: 662141955}
-  targetPos: {fileID: 1477347172}
-  bobberPrefab: {fileID: 2219346982892217821, guid: a9779f8fc0a8d2649bc5330f259a26f5, type: 3}
-  travelTime: 1.2
-  arcHeight: 2.5
 --- !u!120 &320847543
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -436,6 +418,36 @@ MonoBehaviour:
   m_GameObject: {fileID: 320847537}
   m_Enabled: 1
   m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac8f1331b28c92c4eb7bae9e9b42f38f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  castButton: {fileID: 933030282}
+  rodTip: {fileID: 662141955}
+  targetPos: {fileID: 1477347172}
+  bobberPrefab: {fileID: 2219346982892217821, guid: a9779f8fc0a8d2649bc5330f259a26f5, type: 3}
+--- !u!114 &320847545
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 320847537}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abc986a8b904dd844850da92d7e544b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  travelTime: 1.2
+  arcHeight: 1.5
+--- !u!114 &320847546
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 320847537}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8e10aba8d954921459e6944da7bbcc51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
@@ -452,7 +464,7 @@ GameObject:
   - component: {fileID: 361520631}
   - component: {fileID: 361520630}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: "\u7529\u7AFF\u6309\u9375"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -533,7 +545,7 @@ RectTransform:
   m_Children:
   - {fileID: 933030281}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -857,7 +869,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1100413704
 GameObject:
@@ -955,7 +967,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!1 &1303664589
 GameObject:
@@ -1213,7 +1225,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1477347171
 GameObject:
@@ -1225,7 +1237,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1477347172}
   m_Layer: 0
-  m_Name: poive
+  m_Name: point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1343,5 +1355,5 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
