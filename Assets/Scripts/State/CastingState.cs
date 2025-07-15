@@ -1,5 +1,6 @@
-using System.Collections;
+using System.Collections; 
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CastingState : IFishingState
 {
@@ -8,40 +9,44 @@ public class CastingState : IFishingState
     readonly GameObject prefab;
     readonly BobberMotion motion;
     readonly FishingLine line;
+    readonly Button castBtn, reelBtn;
+    GameObject bob;
 
-    GameObject bobber;
-
-    public CastingState(FishingController fc,
-        Transform rodTip,
-        Transform target,
-        GameObject prefab,
-        BobberMotion motion,
-        FishingLine line)
+    public CastingState(FishingController fc, Transform rodTip, Transform target, GameObject prefab,
+        BobberMotion motion, FishingLine line, Button cast, Button reel)
     {
-        this.fc = fc; this.rodTip = rodTip; this.target = target;
-        this.prefab = prefab; this.motion = motion; this.line = line;
+        this.fc = fc;
+        this.rodTip = rodTip;
+        this.target = target;
+        this.prefab = prefab;
+        this.motion = motion;
+        this.line = line;
+        castBtn = cast;
+        reelBtn = reel;
     }
 
-    public void OnEnter() => fc.StartCoroutine(Flow());
-    public void Tick()    { }
-    public void OnExit()  { }
+    public void OnEnter()
+    {
+        castBtn.gameObject.SetActive(false);
+        reelBtn.gameObject.SetActive(true);
+        fc.StartCoroutine(Flow());
+    }
+
+    public void Tick()
+    {
+    }
+
+    public void OnExit()
+    {
+    }
 
     IEnumerator Flow()
     {
-        bobber = Object.Instantiate(prefab, rodTip.position, Quaternion.identity);
-
-        line.SetTargets(rodTip, bobber.transform);
+        bob = Object.Instantiate(prefab, rodTip.position, Quaternion.identity);
+        fc.SetBobber(bob);
+        line.SetTargets(rodTip, bob.transform);
         line.Show(true);
-
-        yield return motion.MoveTo(bobber.transform, target.position);
-
-        Debug.Log("釣魚中");
-        fc.SwitchTo(FishingController.StateID.Baiting);
-    }
-
-    public void DestroyBobber()
-    {
-        if (bobber) Object.Destroy(bobber);
-        line.Show(false);
+        yield return motion.MoveTo(bob.transform, target.position);
+        fc.SwitchTo(FishingController.StateID.Fishing);
     }
 }

@@ -1,18 +1,28 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine.UI;
 
 public class IdleState : IFishingState
 {
     readonly FishingController fc;
-    readonly Button castBtn;
+    readonly Button castBtn, reelBtn;
 
-    public IdleState(FishingController fc, Button btn)
-    { this.fc = fc; castBtn = btn; }
+    public IdleState(FishingController fc, Button cast, Button reel)
+    {
+        this.fc = fc;
+        castBtn = cast;
+        reelBtn = reel;
+    }
 
-    public void OnEnter() => castBtn.onClick.AddListener(OnClick);
-    public void Tick()    { }
-    public void OnExit()  => castBtn.onClick.RemoveListener(OnClick);
+    public void OnEnter()
+    {
+        castBtn.gameObject.SetActive(true);
+        reelBtn.gameObject.SetActive(false);
+        castBtn.onClick.AddListener(OnCast);
+    }
 
-    void OnClick() => fc.SwitchTo(FishingController.StateID.Casting);
+    public void Tick()
+    {
+    }
+
+    public void OnExit() => castBtn.onClick.RemoveListener(OnCast);
+    void OnCast() => fc.SwitchTo(FishingController.StateID.Casting);
 }
