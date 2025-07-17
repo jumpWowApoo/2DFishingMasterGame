@@ -3,7 +3,12 @@ guid: b1b0bb54941ded543ade26b013bb492e
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: fishing_hand_Material
+    second: {fileID: 2100000, guid: d50428dc5a1c54b4887b685e3e5df30c, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

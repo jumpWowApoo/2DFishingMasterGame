@@ -1,9 +1,14 @@
 fileFormatVersion: 2
-guid: 84c4b4bb669fb764eb8708bf7ebdbe6a
+guid: 8ac8c78c8c0ae65458564a224b266940
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: _Splash
+    second: {fileID: 2100000, guid: 26e57b8c33002f346b767ac18b783421, type: 2}
   materials:
     materialImportMode: 2
     materialName: 1
