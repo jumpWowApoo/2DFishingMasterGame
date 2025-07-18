@@ -8,7 +8,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: fishing_hand_Material
-    second: {fileID: 2100000, guid: d50428dc5a1c54b4887b685e3e5df30c, type: 2}
+    second: {fileID: 2100000, guid: fffec00aab4453e499963520fefee2ac, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
