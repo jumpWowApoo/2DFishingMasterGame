@@ -67,6 +67,7 @@ public class ReelInState : IFishingState
 
         castBtn.gameObject.SetActive(true);
         reelBtn.gameObject.SetActive(false);
+        fc.Line.EnableSag(false);
 
         // 將 needBait 帶回控制器
         fc.EndReel(success, needBait);

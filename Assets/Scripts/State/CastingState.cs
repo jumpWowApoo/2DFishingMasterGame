@@ -63,6 +63,7 @@ public class CastingState : IFishingState
         fc.SetBobber(bob);
         fc.FishingStateRef.SetBobber(bobAnim);
         fc.StartCoroutine(bobAnim.Play(BobberAnimation.Clip.Idle));
+        fc.Line.EnableSag(true);
         line.SetTargets(rodTip, fc.BobberAttachPoint);
         line.Show(true);
         yield return motion.MoveTo(bob.transform, target.position);
