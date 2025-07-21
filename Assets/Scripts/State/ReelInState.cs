@@ -56,8 +56,10 @@ public class ReelInState : IFishingState
     {
         Coroutine castAnimCo = null;
         if (rodAnim)
-            castAnimCo = fc.StartCoroutine(rodAnim.Play(RodAnimation.Clip.Reel));
-        yield return new WaitForSeconds(0.3f); // 收竿動畫時長佔位
+            if (rodAnim)
+                yield return fc.StartCoroutine(rodAnim.Play(RodAnimation.Clip.Reel));
+            else
+                yield return new WaitForSeconds(0.3f); // 沒動畫才用固定延遲
 
         line.Show(false);
         if (bobber)

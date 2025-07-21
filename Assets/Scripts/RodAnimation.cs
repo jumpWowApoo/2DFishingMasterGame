@@ -2,97 +2,71 @@ using System.Collections;
 using UnityEngine;
 
 /// <summary>
-/// 不用 Animator Trigger，改直接呼叫 Animator.Play(stateName)。
-/// clipLength 可在 Inspector 設定，或自動從 Animator 讀取。<br/>
-/// 外部：
-///   • PlayIdle()            – 立即 Idle
-///   • yield return Play(Clip.Cast) – 播 Cast 動畫並等待結束
-///   • yield return PlayState("Jump", 0.8f) – 播自訂 State
+/// 控制「竿身」Animator，不含魚漂動畫
 /// </summary>
 [RequireComponent(typeof(Animator))]
 public class RodAnimation : MonoBehaviour
 {
-    public enum Clip
-    {
-        Idle,
-        Cast,
-        Reel
-    }
+    public enum Clip { Idle, Cast, Reel }
 
-    [Header("Animator State 名稱")] [SerializeField]
-    string idleState = "Rod_Idle";
-
+    [Header("Rod Animator State 名稱")]
+    [SerializeField] string idleState = "Rod_Idle";
     [SerializeField] string castState = "Rod_Cast";
     [SerializeField] string reelState = "Rod_Reel";
 
-    [Header("各片段長度 (秒) ─ 若為 0 會自動從 AnimatorClip 讀取")] [SerializeField]
-    float idleLen = 0f;
-
+    [Header("片段長度 (秒) 0=自動偵測")]
+    [SerializeField] float idleLen = 0f;
     [SerializeField] float castLen = 0.5f;
     [SerializeField] float reelLen = 0.3f;
 
-    Animator anim;
+    Animator ani;
     public bool IsBusy { get; private set; }
 
-    void Start()
+    void Awake()
     {
-        anim = GetComponent<Animator>();
-        if (!anim.runtimeAnimatorController)
+        ani = GetComponent<Animator>();
+        if (!ani.runtimeAnimatorController)
         {
-            Debug.LogError($"[{name}] Animator 沒有指派 Controller！RodAnimation 將停用");
+            Debug.LogError($"[{name}] Animator 無 Controller！");
             enabled = false;
             return;
         }
-        // 若 Inspector 沒填長度，嘗試自動從 Clip 取得
-        TryAutoLength(ref idleLen, idleState);
-        TryAutoLength(ref castLen, castState);
-        TryAutoLength(ref reelLen, reelState);
-        Debug.Log($"[RodAnim:{gameObject.name}] idleLen={idleLen} castLen={castLen} reelLen={reelLen}");
-    
+        AutoLen(ref idleLen, idleState);
+        AutoLen(ref castLen, castState);
+        AutoLen(ref reelLen, reelState);
     }
-    
+
     public void PlayIdle()
     {
-        if (IsBusy) return;
-        anim.Play(idleState, 0, 0f);
+        if (!IsBusy) ani.Play(idleState, 0, 0f);
     }
 
     public IEnumerator Play(Clip clip)
     {
-        switch (clip)
-        {
-            case Clip.Cast:
-                yield return PlayState(castState, castLen);
-                break;
-            case Clip.Reel:
-                yield return PlayState(reelState, reelLen);
-                break;
-            case Clip.Idle:
-            default:
-                PlayIdle();
-                break;
-        }
-    }
-
-    /// <summary>通用：直接播放 Animator State 名並等待秒數。</summary>
-    public IEnumerator PlayState(string stateName, float clipLength)
-    {
         if (IsBusy) yield break;
         IsBusy = true;
 
-        anim.CrossFade(stateName, 0f, 0, 0f); // 立即切該動作
-        // 若 clipLength==0，採用 0.1s 預設以免無限迴圈
-        yield return new WaitForSeconds(Mathf.Max(0.1f, clipLength));
-
+        switch (clip)
+        {
+            case Clip.Cast:  yield return PlayState(castState, castLen);  break;
+            case Clip.Reel:  yield return PlayState(reelState, reelLen);  break;
+            default:         PlayIdle();                                  break;
+        }
         IsBusy = false;
     }
-    
-    void TryAutoLength(ref float lenField, string stateName)
-    {
-        if (lenField > 0f) return;                    // 已手填
-        if (!anim.runtimeAnimatorController) return;  // 沒綁 Controller，直接離開
 
-        foreach (var clip in anim.runtimeAnimatorController.animationClips)
-            if (clip.name == stateName) { lenField = clip.length; break; }
+    #region ─── helpers
+    IEnumerator PlayState(string state, float len)
+    {
+        ani.Play(state, 0, 0f);
+        yield return new WaitForSeconds(Mathf.Max(0.1f, len));
     }
+
+    void AutoLen(ref float len, string state)
+    {
+        if (len > 0f) return;
+        foreach (var c in ani.runtimeAnimatorController.animationClips)
+            if (c.name == state) { len = c.length; break; }
+    }
+    #endregion
 }

@@ -549,7 +549,7 @@ MonoBehaviour:
   reelButton: {fileID: 218504881}
   rodTip: {fileID: 662141955}
   targetPos: {fileID: 1477347172}
-  bobberPrefab: {fileID: 2219346982892217821, guid: a9779f8fc0a8d2649bc5330f259a26f5, type: 3}
+  bobberPrefab: {fileID: 4934028872659358538, guid: a9779f8fc0a8d2649bc5330f259a26f5, type: 3}
   waitRange: {x: 2, y: 5}
   biteAutoTime: 3
   successWindow: 2
@@ -598,7 +598,7 @@ MonoBehaviour:
   reelState: Rod_ReelIn
   idleLen: 0
   castLen: 0.5
-  reelLen: 0.01
+  reelLen: 0.3
 --- !u!95 &320847548
 Animator:
   serializedVersion: 4
@@ -609,7 +609,7 @@ Animator:
   m_GameObject: {fileID: 320847537}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 68c82b6226fd9c14ba45aa1105df94e1, type: 2}
+  m_Controller: {fileID: 9100000, guid: 9ebff44666871cd45b34ed7f256156c4, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1130,14 +1130,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1100413704}
-  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: -0.7071068, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 22.8}
   m_LocalScale: {x: 2.3139384, y: 1, z: 1.1965}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: 180, z: 0}
 --- !u!1 &1303664589
 GameObject:
   m_ObjectHideFlags: 0
@@ -1521,8 +1521,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1477347171}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -33.8, y: -2.06, z: 13.35}
-  m_LocalScale: {x: 0.55, y: 0.55, z: 0.55}
+  m_LocalPosition: {x: -33.71, y: -0.11, z: 19.2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 853559218}

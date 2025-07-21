@@ -6,13 +6,15 @@ public class ResultState : IFishingState
     readonly FishingController fc;
     readonly bool success;
     readonly Button castBtn, reelBtn;
+    private readonly RodAnimation rodAnim;
 
-    public ResultState(FishingController fc, bool success, Button cast, Button reel)
+    public ResultState(FishingController fc, bool success, Button cast, Button reel,RodAnimation rodAnim)
     {
         this.fc = fc;
         this.success = success;
         castBtn = cast;
         reelBtn = reel;
+        this.rodAnim = rodAnim;
     }
 
     public void OnEnter()
