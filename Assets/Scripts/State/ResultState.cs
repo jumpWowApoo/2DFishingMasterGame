@@ -1,52 +1,45 @@
 using UnityEngine;
-using UnityEngine.UI;
-using System.Collections.Generic;
 
-/// <summary>
-/// 判斷釣魚成功與失敗
-/// </summary>
+/// <summary>顯示釣魚結果；成功時等玩家關閉面板再掛餌。</summary>
 public class ResultState : IFishingState
 {
     readonly FishingController fc;
     readonly bool success;
-    readonly Button castBtn, reelBtn;
-    private readonly RodAnimation rodAnim;
-    
+    readonly FishInfoPanel panel;
+    readonly UIHub hub;
 
-    public ResultState(FishingController fc, bool success, Button cast, Button reel,RodAnimation rodAnim)
+    public ResultState(FishingController fc, bool success,
+        FishInfoPanel panel, UIHub hub)
     {
-        this.fc = fc;
+        this.fc      = fc;
         this.success = success;
-        castBtn = cast;
-        reelBtn = reel;
-        this.rodAnim = rodAnim;
+        this.panel   = panel;
+        this.hub     = hub;
     }
 
     public void OnEnter()
     {
         if (success)
         {
-            success_fish();
+            Debug.Log($"panel={panel}, item={fc.CurrentFishItem}");
+            // 印魚名 & 顯示面板；關閉面板後再掛餌
+            Debug.Log($"玩家釣到：{fc.CurrentFishItem.data.fishName}");
+            Debug.Log("成功釣魚");
+            panel.Bind(fc.CurrentFishItem);
+            hub.ShowFishInfo();
         }
         else
         {
-            Debug.Log("釣魚失敗");
+            Debug.Log("失敗");
+            // 失敗立刻掛餌
+            fc.SwitchTo(FishingController.StateID.Baiting);
         }
-        fc.SwitchTo(FishingController.StateID.Baiting);
     }
 
-    public void Tick()
-    {
-    }
+    public void Tick() { }
 
-    public void OnExit()
-    {
-    }
+    public void OnExit() => hub.HideFishInfo();
 
-    private void success_fish()
-    {
-        List<FishData> pool = fc.fishDB.fishes;
-        FishData fish = FishPicker.PickRandomFish(pool);
-        Debug.Log($"玩家釣到：{fish.fishName}");
-    }
+    /* 成功情況：面板關閉 → 回到掛餌 */
+    void OnPanelClosed() => fc.SwitchTo(FishingController.StateID.Baiting);
 }

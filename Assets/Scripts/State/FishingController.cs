@@ -1,13 +1,15 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
-using System.Linq;
+using Game.Inventory;
 
 [RequireComponent(typeof(FishingLine))]
 [RequireComponent(typeof(BobberMotion))]
 public class FishingController : MonoBehaviour
 {
+    /* ---------- 狀態列舉 ---------- */
     public enum StateID
     {
         Idle,
@@ -15,92 +17,128 @@ public class FishingController : MonoBehaviour
         Fishing,
         FishBite,
         ReelIn,
-        CaughtSuccess,
-        CaughtFail,
+        Result,
         Baiting
     }
 
-    [Header("UI / Refs")] public Button castButton;
+    /* ---------- Inspector 參照 ---------- */
+    [Header("UI / Refs")]
+    public Button castButton;
     public Button reelButton;
     public Transform rodTip;
     public Transform targetPos;
     public GameObject bobberPrefab;
-    public Transform BobberAttachPoint { get; private set; }
 
-    [Header("Params")] public Vector2 waitRange = new(5, 10);
+    [Header("魚資料庫與 UI")]
+    [SerializeField] FishDatabase db;      // ★ 新增
+    [SerializeField] FishInfoPanel infoPanel;
+    [SerializeField] UIHub uiHub;
+
+    /* ---------- 釣魚參數 ---------- */
+    [Header("Params")]
+    public Vector2 waitRange = new(5, 10);
     public float biteAutoTime = 3f;
     public float successWindow = 2f;
     [SerializeField] float baitAnimLen = 1.0f;
     [SerializeField] RodAnimation rodAnim;
-    
-    [Header("魚資料")]
-    public FishDatabase fishDB;
-    
+
+    /* ---------- 內部欄位 ---------- */
     readonly Dictionary<StateID, IFishingState> map = new();
     IFishingState current;
-    public StateID CurrentID { get; private set; }
-    public FishingLine Line { get; private set; }
-    public GameObject CurrentBobber { get; private set; }
-    public event Action<bool> OnResult;
-    public FishingState FishingStateRef { get; private set; } // 新增
 
+    public StateID       CurrentID       { get; private set; }
+    public FishingLine   Line            { get; private set; }
+    public GameObject    CurrentBobber   { get; private set; }
+    public Transform     BobberAttachPoint { get; private set; }
+
+    public FishingState  FishingStateRef { get; private set; } // 提供 GUI 觀察
+    public FishItem      CurrentFishItem { get; private set; } // ★ 這次釣到的魚
+
+    public event Action<bool> OnResult;
+
+    /* ---------- 初始 ---------- */
     void Start()
     {
         Line = GetComponent<FishingLine>();
-        var mot = GetComponent<BobberMotion>();
-        map[StateID.Idle] = new IdleState(this, castButton, reelButton, rodAnim);
-        map[StateID.Casting] =
-            new CastingState(this, rodTip, targetPos, bobberPrefab, mot, Line, rodAnim, castButton, reelButton);
-        var fs = new FishingState(this, waitRange, reelButton, rodAnim);
-        FishingStateRef = fs; // GUI 用
-        map[StateID.Fishing] = fs; // 導演切換用
+        var motion = GetComponent<BobberMotion>();
+        
+        map[StateID.Idle]     = new IdleState(this, castButton, reelButton, rodAnim);
+        map[StateID.Casting]  = new CastingState(this, rodTip, targetPos, bobberPrefab,
+                                                 motion, Line, rodAnim,
+                                                 castButton, reelButton);
+
+        FishingStateRef       = new FishingState(this, waitRange, reelButton, rodAnim);
+        map[StateID.Fishing]  = FishingStateRef;
+
         map[StateID.FishBite] = new FishBiteState(this, biteAutoTime, successWindow, rodAnim);
-        map[StateID.Baiting] = new BaitingState(this, rodAnim);
-        map[StateID.ReelIn] =
-            new ReelInState(this, Line, null, false, false, castButton, reelButton, rodAnim);
+        map[StateID.Baiting]  = new BaitingState(this, rodAnim,castButton,reelButton);
+        
 
         SwitchTo(StateID.Idle);
     }
 
     void Update() => current?.Tick();
-
+    
     public void SwitchTo(StateID id)
     {
         current?.OnExit();
-        CurrentID = id;
-        current = map[id];
-        current.OnEnter();
-    }
+        if (id == StateID.Fishing)
+        {
+            FishData fd = db.RandomPick();
+            CurrentFishItem = new FishItem(fd);
+            InventoryMgr.Instance.Add(CurrentFishItem);
+        }
+        
+        current = id switch
+        {
+            StateID.Idle     => map[StateID.Idle],
+            StateID.Casting  => map[StateID.Casting],
+            StateID.Fishing  => map[StateID.Fishing],
+            StateID.FishBite => map[StateID.FishBite],
+            StateID.Baiting  => map[StateID.Baiting],
+            StateID.ReelIn   => CreateReelInState(false, false),
+            _                => null
+        };
 
+        CurrentID = id;
+        current?.OnEnter();
+    }
+    
     public void SetBobber(GameObject bob)
     {
         CurrentBobber = bob;
         BobberAttachPoint = bob.GetComponentsInChildren<Transform>(true)
-                                .FirstOrDefault(t => t.name == "LineAttachPoint")
+                               .FirstOrDefault(t => t.name == "LineAttachPoint")
                             ?? bob.transform;
     }
-
-    // needBait: true=進掛餌動畫 ; false=直接回 Idle
+    
+    // 初始化 Reeling
     public void BeginReel(bool success, bool needBait)
     {
         current?.OnExit();
-        current = new ReelInState(this, Line, CurrentBobber, success, needBait, castButton, reelButton, rodAnim);
+        current = CreateReelInState(success, needBait);
         CurrentID = StateID.ReelIn;
         current.OnEnter();
     }
 
+    // 收線動畫結束後呼叫
     public void EndReel(bool success, bool needBait)
     {
         OnResult?.Invoke(success);
-        if (needBait)
+        if (needBait)  
         {
-            current = new ResultState(this, success, castButton, reelButton, rodAnim);
-            CurrentID = success ? StateID.CaughtSuccess : StateID.CaughtFail;
+            current?.OnExit();
+            current   = new ResultState(this, success, infoPanel, uiHub);
+            CurrentID = StateID.Result;
             current.OnEnter();
+            return;
         }
-        else
-        {
-            SwitchTo(StateID.Idle);
-        }
+
+        SwitchTo(StateID.Idle);
     }
+
+    /* ---------- 工具：動態 new ReelInState ---------- */
+    IFishingState CreateReelInState(bool success, bool needBait) =>
+        new ReelInState(this, Line, CurrentBobber, success, needBait,
+                        castButton, reelButton, rodAnim);
 }

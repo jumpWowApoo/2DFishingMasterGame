@@ -39,8 +39,6 @@ public class ReelInState : IFishingState
 
     public void OnEnter()
     {
-        castBtn.gameObject.SetActive(false);
-        reelBtn.gameObject.SetActive(true);
         fc.StartCoroutine(ReelFlow());
     }
 
@@ -65,7 +63,7 @@ public class ReelInState : IFishingState
         if (bobber)
             Object.Destroy(bobber);
 
-        castBtn.gameObject.SetActive(true);
+        castBtn.gameObject.SetActive(false);
         reelBtn.gameObject.SetActive(false);
         fc.Line.EnableSag(false);
 
