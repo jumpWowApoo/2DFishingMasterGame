@@ -4,23 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b3777719-99e7-4dea-aed2-4406d48ef5f7" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.2Dchill/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.2Dchill/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/FishingRod.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/FishingRod.controller" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/fishhook.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/fishhook.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/S1.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/S1.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BobberFloat.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BobberFloat.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/RodAnimation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/RodAnimation.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/State/BaitingState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/State/BaitingState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/State/CastingState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/State/CastingState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/State/FishBiteState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/State/FishBiteState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/State/FishingController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/State/FishingController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/State/FishingState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/State/FishingState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/State/ReelInState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/State/ReelInState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/State/ResultState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/State/ResultState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/ShaderGraphSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ShaderGraphSettings.asset" afterDir="false" />
-    </list>
+    <list default="true" id="b3777719-99e7-4dea-aed2-4406d48ef5f7" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -120,7 +104,7 @@
       <workItem from="1752460972948" duration="111000" />
       <workItem from="1752486882200" duration="1128000" />
       <workItem from="1752541744592" duration="29360000" />
-      <workItem from="1753062974540" duration="19419000" />
+      <workItem from="1753062974540" duration="26541000" />
     </task>
     <servers />
   </component>
@@ -148,37 +132,5 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/State/FishingController.cs</url>
-          <line>73</line>
-          <properties documentPath="D:\desktop_link\GAME\2Dchill\Assets\Scripts\State\FishingController.cs" containingFunctionPresentation="Method 'SetBobber'">
-            <startOffsets>
-              <option value="2310" />
-            </startOffsets>
-            <endOffsets>
-              <option value="2330" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/State/FishingController.cs</url>
-          <line>77</line>
-          <properties documentPath="D:\desktop_link\GAME\2Dchill\Assets\Scripts\State\FishingController.cs" containingFunctionPresentation="Method 'SetBobber'">
-            <startOffsets>
-              <option value="2536" />
-            </startOffsets>
-            <endOffsets>
-              <option value="2537" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

@@ -32,7 +32,10 @@ public class FishingController : MonoBehaviour
     public float successWindow = 2f;
     [SerializeField] float baitAnimLen = 1.0f;
     [SerializeField] RodAnimation rodAnim;
-
+    
+    [Header("魚資料")]
+    public FishDatabase fishDB;
+    
     readonly Dictionary<StateID, IFishingState> map = new();
     IFishingState current;
     public StateID CurrentID { get; private set; }
