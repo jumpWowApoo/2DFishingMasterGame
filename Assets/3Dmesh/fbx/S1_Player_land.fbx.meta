@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 84c4b4bb669fb764eb8708bf7ebdbe6a
+guid: 3ba0057f61d1f2e4a980c2761176b20f
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
@@ -7,8 +7,8 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: ground_pixel_
-    second: {fileID: 2100000, guid: b63ab7afd7a55204b822225eb0aaf202, type: 2}
+      name: ground_pixel_tidy
+    second: {fileID: 2100000, guid: f74c092787eb79f41b68db8e29c4b8e7, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
