@@ -88,7 +88,6 @@ public class FishingController : MonoBehaviour
         {
             FishData fd = db.RandomPick();
             CurrentFishItem = new FishItem(fd);
-            InventoryMgr.Instance.Add(CurrentFishItem);
         }
         
         current = id switch

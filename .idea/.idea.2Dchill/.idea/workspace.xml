@@ -5,16 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b3777719-99e7-4dea-aed2-4406d48ef5f7" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.2Dchill/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.2Dchill/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/S1.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/S1.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ItemSystem/Fish 3.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ItemSystem/Fish 3.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ItemSystem/Fish Database.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ItemSystem/Fish Database.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ItemSystem/FishDatabase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ItemSystem/FishDatabase.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ItemSystem/Fish_1.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ItemSystem/Fish_1.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ItemSystem/Fish_2.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ItemSystem/Fish_2.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ItemSystem/InventoryMgr.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ItemSystem/InventoryMgr.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ItemSystem/InventoryUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ItemSystem/InventoryUI.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ItemSystem/ItemSlot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ItemSystem/ItemSlot.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Line&amp;&amp;UI/BigImageDragHandle.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Line&amp;&amp;UI/BigImageDragHandle.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Line&amp;&amp;UI/FishDragHandle.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Line&amp;&amp;UI/FishDragHandle.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Line&amp;&amp;UI/FishInfoPanel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Line&amp;&amp;UI/FishInfoPanel.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/State/FishingController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/State/FishingController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/State/ResultState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/State/ResultState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/URPProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/URPProjectSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,11 +28,13 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/ef8c5b14061044d1b5a7b543dce470f126e00/99/512c280a/Animation.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/ef8c5b14061044d1b5a7b543dce470f126e00/ad/825a2aee/Animator.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/BobberAnimation.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/ItemSystem/DragInfo.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/ItemSystem/FishDatabase.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/ItemSystem/InventoryItemBase.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/ItemSystem/InventoryMgr.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/ItemSystem/InventoryUI.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/ItemSystem/ItemSlot.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Line&amp;&amp;UI/BigImageDragHandle.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Line&amp;&amp;UI/FishDragHandle.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Line&amp;&amp;UI/FishInfoPanel.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Line&amp;&amp;UI/UIHub.cs" root0="FORCE_HIGHLIGHTING" />
@@ -56,27 +56,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Attach to Unity Editor.Attach to Unity Editor.executor": "Debug",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "settings.qodana",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Attach to Unity Editor.Attach to Unity Editor.executor&quot;: &quot;Debug&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;settings.qodana&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "rider.external.source.directories": [
-      "C:\\Users\\lovek\\AppData\\Roaming\\JetBrains\\Rider2024.1\\resharper-host\\DecompilerCache",
-      "C:\\Users\\lovek\\AppData\\Roaming\\JetBrains\\Rider2024.1\\resharper-host\\SourcesCache",
-      "C:\\Users\\lovek\\AppData\\Local\\Symbols\\src"
+  &quot;keyToStringList&quot;: {
+    &quot;rider.external.source.directories&quot;: [
+      &quot;C:\\Users\\lovek\\AppData\\Roaming\\JetBrains\\Rider2024.1\\resharper-host\\DecompilerCache&quot;,
+      &quot;C:\\Users\\lovek\\AppData\\Roaming\\JetBrains\\Rider2024.1\\resharper-host\\SourcesCache&quot;,
+      &quot;C:\\Users\\lovek\\AppData\\Local\\Symbols\\src&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="D:\遊戲\unity\2021.3.15f1\Editor\Unity.exe" />
@@ -104,10 +104,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="30756">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="17100">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="30756" />
+      <option name="pid" value="17100" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -128,6 +128,7 @@
       <workItem from="1752541744592" duration="29360000" />
       <workItem from="1753062974540" duration="26541000" />
       <workItem from="1753150528431" duration="25369000" />
+      <workItem from="1753665662886" duration="16997000" />
     </task>
     <servers />
   </component>
@@ -160,30 +161,30 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/State/FishingController.cs</url>
-          <line>138</line>
-          <properties documentPath="D:\desktop_link\GAME\2Dchill\Assets\Scripts\State\FishingController.cs" containingFunctionPresentation="Method 'EndReel'">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/Line&amp;&amp;UI/FishDragHandle.cs</url>
+          <line>48</line>
+          <properties documentPath="D:\desktop_link\GAME\2Dchill\Assets\Scripts\Line&amp;&amp;UI\FishDragHandle.cs" containingFunctionPresentation="Method 'OnEndDrag'">
             <startOffsets>
-              <option value="4216" />
+              <option value="1582" />
             </startOffsets>
             <endOffsets>
-              <option value="4234" />
+              <option value="1583" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="6" />
+          <option name="timeStamp" value="8" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/State/FishingController.cs</url>
-          <line>126</line>
-          <properties documentPath="D:\desktop_link\GAME\2Dchill\Assets\Scripts\State\FishingController.cs" containingFunctionPresentation="Method 'EndReel'">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/Line&amp;&amp;UI/FishDragHandle.cs</url>
+          <line>53</line>
+          <properties documentPath="D:\desktop_link\GAME\2Dchill\Assets\Scripts\Line&amp;&amp;UI\FishDragHandle.cs" containingFunctionPresentation="Method 'OnEndDrag'">
             <startOffsets>
-              <option value="3917" />
+              <option value="1779" />
             </startOffsets>
             <endOffsets>
-              <option value="3943" />
+              <option value="1780" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="7" />
+          <option name="timeStamp" value="9" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

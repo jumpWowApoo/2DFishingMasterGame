@@ -10,8 +10,8 @@ namespace Game.UI
         IPointerClickHandler, IDropHandler
     {
         [Header("UI Refs")]
-        [SerializeField] Image icon;          // 小圖
-        [SerializeField] Text  label;         // 名稱 (可選)
+        [SerializeField] Image icon;
+        [SerializeField] Text  label;
 
         int index;
 
@@ -20,11 +20,19 @@ namespace Game.UI
             if (icon == null) icon = GetComponent<Image>();
         }
 
-        /* 刷新格子 */
         public void Bind(int idx, InventoryItemBase item)
         {
             index = idx;
+            
+            // 先初始化拖曳把手 (只有魚可拖)
+            if (item is FishItem fish)
+            {
+                var drag = icon.GetComponent<FishDragHandle>();
+                if (drag != null)
+                    drag.Init(fish, idx);
+            }
 
+            // 再顯示小圖／文字
             if (item != null)
             {
                 icon.enabled = true;
@@ -43,21 +51,32 @@ namespace Game.UI
             }
         }
 
-        /* 右鍵移除 */
         public void OnPointerClick(PointerEventData e)
         {
             if (e.button == PointerEventData.InputButton.Right)
                 InventoryMgr.Instance.RemoveAt(index);
         }
 
-        /* 接收從大圖或其他格拖來的魚 */
         public void OnDrop(PointerEventData e)
         {
-            var dragged = BigImageDragHandle.CurrentDragged;
-            if (dragged == null) return;
+            var fish = DragInfo.CurrentDragged;
+            if (fish == null) return;
 
-            InventoryMgr.Instance.Add(dragged);
-            Bind(index, dragged);                 // 立即顯示
+            if (DragInfo.FromInventory)
+            {
+                // 3) 背包內拖動 → 換位置，不新增
+                InventoryMgr.Instance.Move(DragInfo.OriginSlotIndex, index);
+            }
+            else
+            {
+                // 2) 視窗拖進來 → 插入到此格，並關閉面板
+                InventoryMgr.Instance.AddAt(index, fish);
+                UIHub.Instance.HideFishInfo();
+            }
+
+            // 4) 放進哪格就是哪格
+            Bind(index, fish);
+            DragInfo.CurrentDragged = null;
         }
     }
 }

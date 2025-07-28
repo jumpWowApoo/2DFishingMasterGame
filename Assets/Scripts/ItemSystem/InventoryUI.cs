@@ -6,28 +6,38 @@ namespace Game.UI
     public class InventoryUI : MonoBehaviour
     {
         [SerializeField] ItemSlot[] slots;
+
         void Awake()
         {
-            /* 在自己（InventoryWindow）底下抓所有啟用的 ItemSlot */
-            slots = GetComponentsInChildren<ItemSlot>(includeInactive: true);
+            slots = GetComponentsInChildren<ItemSlot>(true);
         }
+
         void OnEnable()
         {
-            InventoryMgr.Instance.OnAdd    += _ => Refresh();
-            InventoryMgr.Instance.OnRemove += _ => Refresh();
+            InventoryMgr.Instance.OnSlotChanged += OnSlotChanged;
             Refresh();
         }
+
         void OnDisable()
         {
-            InventoryMgr.Instance.OnAdd    -= _ => Refresh();
-            InventoryMgr.Instance.OnRemove -= _ => Refresh();
+            InventoryMgr.Instance.OnSlotChanged -= OnSlotChanged;
+        }
+
+        void OnSlotChanged(int index)
+        {
+            // 只刷新該格
+            var item = InventoryMgr.Instance.Items[index];
+            slots[index].Bind(index, item);
         }
 
         void Refresh()
         {
-            var list = InventoryMgr.Instance.Items;
+            var items = InventoryMgr.Instance.Items;
             for (int i = 0; i < slots.Length; i++)
-                slots[i].Bind(i, i < list.Count ? list[i] : null);
+            {
+                var item = i < items.Count ? items[i] : null;
+                slots[i].Bind(i, item);
+            }
         }
     }
 }

@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 namespace Game.UI
 {
@@ -7,20 +8,37 @@ namespace Game.UI
     public class FishDragHandle : MonoBehaviour,
         IBeginDragHandler, IDragHandler, IEndDragHandler
     {
-        [SerializeField] RectTransform dragRoot; // 建議指向 Canvas 下空物件
+        [SerializeField] RectTransform dragRoot;
+        FishItem   item;
+        int        originSlot;
+        GameObject dragVisual;
+        CanvasGroup cg;
 
-        FishItem     item;
-        GameObject   dragVisual;
-        CanvasGroup  cg;
-
-        public void Init(FishItem item) => this.item = item;
+        /// <summary>初始化要拖的物件及來源格</summary>
+        public void Init(FishItem item, int slotIndex)
+        {
+            this.item       = item;
+            this.originSlot = slotIndex;
+            if (dragRoot == null && UIHub.Instance != null)
+                dragRoot = UIHub.Instance.DragLayer;
+        }
 
         public void OnBeginDrag(PointerEventData e)
         {
+            Debug.Log("Panel BeginDrag");
+            if (item == null || dragRoot == null) return;
+
             dragVisual = Instantiate(item.data.dragItemPrefab, dragRoot);
+            if (dragVisual.TryGetComponent(out Image img))
+                img.sprite = item.Icon;
             cg = dragVisual.GetComponent<CanvasGroup>() ?? dragVisual.AddComponent<CanvasGroup>();
             cg.blocksRaycasts = false;
             dragVisual.transform.position = e.position;
+
+            // 設定拖曳資訊
+            DragInfo.CurrentDragged  = item;
+            DragInfo.OriginSlotIndex = originSlot;
+            DragInfo.FromInventory   = true;
         }
 
         public void OnDrag(PointerEventData e)
@@ -30,7 +48,9 @@ namespace Game.UI
 
         public void OnEndDrag(PointerEventData e)
         {
-            if (dragVisual) Destroy(dragVisual);
+            Debug.Log("Panel EndDrag");      // ← 這行代表滑鼠放開時呼到
+            Destroy(dragVisual);             // 清掉拖影
+            DragInfo.CurrentDragged = null;  // 清除狀態
         }
     }
 }

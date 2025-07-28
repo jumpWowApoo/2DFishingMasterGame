@@ -10,15 +10,8 @@ namespace Game.UI
         [SerializeField] Text  txtName;
         [SerializeField] Text  txtDesc;
         [SerializeField] Button closeBtn;
-        [SerializeField] RectTransform dragRoot;   // 若空，Awake 會嘗試抓 UIHub.Instance.DragLayer
-
         Action onClose;
-
-        void Awake()
-        {
-            if (dragRoot == null && UIHub.Instance != null)
-                dragRoot = UIHub.Instance.DragLayer;
-        }
+        
 
         /* 顯示面板並設定關閉回調 */
         public void Bind(FishItem item, Action onClose = null)
@@ -32,7 +25,7 @@ namespace Game.UI
             /* 初始化大圖拖曳 */
             var drag = imgBig.GetComponent<BigImageDragHandle>() ??
                        imgBig.gameObject.AddComponent<BigImageDragHandle>();
-            drag.Init(item, dragRoot);
+            drag.Init(item);
 
             /* 關閉按鈕 */
             this.onClose = onClose;
