@@ -1,4 +1,5 @@
 using UnityEngine;
+using Game.UI;
 
 /// <summary>顯示釣魚結果；成功時等玩家關閉面板再掛餌。</summary>
 public class ResultState : IFishingState
@@ -22,10 +23,10 @@ public class ResultState : IFishingState
         if (success)
         {
             Debug.Log($"panel={panel}, item={fc.CurrentFishItem}");
-            // 印魚名 & 顯示面板；關閉面板後再掛餌
             Debug.Log($"玩家釣到：{fc.CurrentFishItem.data.fishName}");
             Debug.Log("成功釣魚");
             panel.Bind(fc.CurrentFishItem);
+            OnPanelClosed();
             hub.ShowFishInfo();
         }
         else

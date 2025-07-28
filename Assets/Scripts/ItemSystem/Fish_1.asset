@@ -17,4 +17,4 @@ MonoBehaviour:
   bigImage: {fileID: 21300000, guid: e03d4924d7513274db14fa495f7922e0, type: 3}
   weight: 0.33
   description: "\u7570\u7A2E\u85CD\u8272\u7684\u9B5A \u98DF\u7528\u6703\u4E2D\u6BD2"
-  dragItemPrefab: {fileID: 3590738244733396411, guid: 2ce5b4a58aa99104cb6ebd0d2ec45d60, type: 3}
+  dragItemPrefab: {fileID: 1215925595186405354, guid: b016daeeca2250f418071e7e18330946, type: 3}

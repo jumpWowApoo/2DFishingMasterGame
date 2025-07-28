@@ -4,6 +4,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 using Game.Inventory;
+using Game.UI;
 
 [RequireComponent(typeof(FishingLine))]
 [RequireComponent(typeof(BobberMotion))]
@@ -61,6 +62,7 @@ public class FishingController : MonoBehaviour
     {
         Line = GetComponent<FishingLine>();
         var motion = GetComponent<BobberMotion>();
+        uiHub.CloseAll();
         
         map[StateID.Idle]     = new IdleState(this, castButton, reelButton, rodAnim);
         map[StateID.Casting]  = new CastingState(this, rodTip, targetPos, bobberPrefab,
