@@ -64,17 +64,13 @@ namespace Game.UI
 
             if (DragInfo.FromInventory)
             {
-                // 3) 背包內拖動 → 換位置，不新增
                 InventoryMgr.Instance.Move(DragInfo.OriginSlotIndex, index);
             }
             else
             {
-                // 2) 視窗拖進來 → 插入到此格，並關閉面板
                 InventoryMgr.Instance.AddAt(index, fish);
-                UIHub.Instance.HideFishInfo();
             }
-
-            // 4) 放進哪格就是哪格
+            
             Bind(index, fish);
             DragInfo.CurrentDragged = null;
         }

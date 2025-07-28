@@ -43,10 +43,9 @@ namespace Game.UI
 
         public void OnEndDrag(PointerEventData e)
         {
-            if (dragVisual) Destroy(dragVisual);
-            dragVisual = null;
-            Debug.Log("[BigImageDragHandle] OnEndDrag");
-            DragInfo.CurrentDragged = null;
+            Destroy(dragVisual);             // 清掉拖影
+            DragInfo.CurrentDragged = null;  // 清除狀態
+            UIHub.Instance.HideFishInfo();
         }
     }
 }

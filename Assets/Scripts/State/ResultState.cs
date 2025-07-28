@@ -22,7 +22,6 @@ public class ResultState : IFishingState
     {
         if (success)
         {
-            Debug.Log($"panel={panel}, item={fc.CurrentFishItem}");
             Debug.Log($"玩家釣到：{fc.CurrentFishItem.data.fishName}");
             Debug.Log("成功釣魚");
             panel.Bind(fc.CurrentFishItem);

@@ -25,7 +25,6 @@ namespace Game.UI
 
         public void OnBeginDrag(PointerEventData e)
         {
-            Debug.Log("Panel BeginDrag");
             if (item == null || dragRoot == null) return;
 
             dragVisual = Instantiate(item.data.dragItemPrefab, dragRoot);
@@ -48,7 +47,6 @@ namespace Game.UI
 
         public void OnEndDrag(PointerEventData e)
         {
-            Debug.Log("Panel EndDrag");      // ← 這行代表滑鼠放開時呼到
             Destroy(dragVisual);             // 清掉拖影
             DragInfo.CurrentDragged = null;  // 清除狀態
         }
