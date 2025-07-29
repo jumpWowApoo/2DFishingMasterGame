@@ -5,14 +5,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b3777719-99e7-4dea-aed2-4406d48ef5f7" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.2Dchill/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.2Dchill/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/S1.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/S1.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ItemSystem/InventoryMgr.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ItemSystem/InventoryMgr.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ItemSystem/InventoryUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ItemSystem/InventoryUI.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ItemSystem/ItemSlot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ItemSystem/ItemSlot.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Line&amp;&amp;UI/BigImageDragHandle.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Line&amp;&amp;UI/BigImageDragHandle.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Line&amp;&amp;UI/FishDragHandle.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Line&amp;&amp;UI/FishDragHandle.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Line&amp;&amp;UI/FishInfoPanel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Line&amp;&amp;UI/FishInfoPanel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/State/FishingController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/State/FishingController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/State/BaitingState.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/State/BaitingState.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/State/CastingState.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/State/CastingState.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/State/FishBiteState.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/State/FishBiteState.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/State/FishPicker.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/State/FishPicker.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/State/FishingController.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/State/FishingController.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/State/FishingState.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/State/FishingState.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/State/IFishingState.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/State/IFishingState.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/State/IdleState.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/State/IdleState.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/State/ReelInState.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/State/ReelInState.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/State/ResultState.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/State/ResultState.cs.meta" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,6 +56,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/State/FishingState.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/State/ResultState.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Test/TestGUI.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/EventSystem/ExecuteEvents.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/UI/Core/Image.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
@@ -104,10 +119,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="17100">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="17100" />
+      <option name="pid" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -128,7 +143,8 @@
       <workItem from="1752541744592" duration="29360000" />
       <workItem from="1753062974540" duration="26541000" />
       <workItem from="1753150528431" duration="25369000" />
-      <workItem from="1753665662886" duration="16997000" />
+      <workItem from="1753665662886" duration="22401000" />
+      <workItem from="1753759443713" duration="1483000" />
     </task>
     <servers />
   </component>
@@ -156,38 +172,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/Line&amp;&amp;UI/FishDragHandle.cs</url>
-          <line>48</line>
-          <properties documentPath="D:\desktop_link\GAME\2Dchill\Assets\Scripts\Line&amp;&amp;UI\FishDragHandle.cs" containingFunctionPresentation="Method 'OnEndDrag'">
-            <startOffsets>
-              <option value="1582" />
-            </startOffsets>
-            <endOffsets>
-              <option value="1583" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="8" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/Line&amp;&amp;UI/FishDragHandle.cs</url>
-          <line>53</line>
-          <properties documentPath="D:\desktop_link\GAME\2Dchill\Assets\Scripts\Line&amp;&amp;UI\FishDragHandle.cs" containingFunctionPresentation="Method 'OnEndDrag'">
-            <startOffsets>
-              <option value="1779" />
-            </startOffsets>
-            <endOffsets>
-              <option value="1780" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="9" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

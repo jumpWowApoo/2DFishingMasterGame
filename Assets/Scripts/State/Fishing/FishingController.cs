@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
-using Game.Inventory;
 using Game.UI;
+using Game.Common;
 
 [RequireComponent(typeof(FishingLine))]
 [RequireComponent(typeof(BobberMotion))]
