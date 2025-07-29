@@ -77,7 +77,7 @@ Material:
     - _alpha: 0.68
     - _deepth: 16.94
     - _emiss: 0.26
-    - _fram: 0.15
+    - _fram: 0.5
     - _water_fram: 0.24
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 0}
