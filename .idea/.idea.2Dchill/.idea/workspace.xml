@@ -6,10 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="b3777719-99e7-4dea-aed2-4406d48ef5f7" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.2Dchill/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.2Dchill/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/FishingRod.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/FishingRod.controller" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/S1.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/S1.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/game_scene/Camera_left Profile.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/game_scene/Camera_left Profile.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/State/Fishing/ResultState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/State/Fishing/ResultState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/State/Stamina/StaminaVisualController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/State/Stamina/StaminaVisualController.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -125,7 +123,7 @@
       <workItem from="1753062974540" duration="26541000" />
       <workItem from="1753150528431" duration="25369000" />
       <workItem from="1753665662886" duration="22401000" />
-      <workItem from="1753759443713" duration="12461000" />
+      <workItem from="1753759443713" duration="13969000" />
     </task>
     <servers />
   </component>

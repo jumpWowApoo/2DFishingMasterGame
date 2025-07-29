@@ -18,37 +18,33 @@ namespace Game.Stamina {
         StaminaController ctx;
 
         void Awake() {
-            // Blink 模組自動抓
-            if (blinkModule == null)
-                blinkModule = GetComponentInChildren<BlinkAnimationModule>(true);
+            if (!blinkModule) blinkModule = GetComponentInChildren<BlinkAnimationModule>(true);
 
-            // Volume 自動抓
-            if (volume == null)
-                volume = GetComponentInChildren<Volume>(true);
-            if (volume == null && Camera.main)
-                volume = Camera.main.GetComponentInChildren<Volume>(true);
-            if (volume == null && Camera.main) {
-                Transform p = Camera.main.transform.parent;
-                while (p && volume == null) {
-                    volume = p.GetComponent<Volume>() ?? p.GetComponentInChildren<Volume>(true);
-                    p = p.parent;
-                }
-            }
-            if (volume == null) {
-                foreach (var v in FindObjectsOfType<Volume>(true)) {
-                    if (v.isGlobal) { volume = v; break; }
-                }
-            }
-
+            volume = volume ? volume : FindVolume();          // 自動尋 Volume
             if (volume && volume.profile) {
                 volume.profile.TryGet(out vignette);
                 volume.profile.TryGet(out colorAdj);
-            } else {
-                Debug.LogWarning("[StaminaVisualController] 找不到可用的 Volume，視覺效果將停用。");
             }
 
-            // 先嘗試抓 Controller
-            ctx = GetComponentInParent<StaminaController>();
+            ctx = GetComponentInParent<StaminaController>();  // 可能為 null，待 OnEnable 再檢
+        }
+        Volume FindVolume() {
+            if (volume) return volume;
+            if (Camera.main) {
+                var v = Camera.main.GetComponentInChildren<Volume>(true);
+                if (v) return v;
+                // 往父鏈追
+                var p = Camera.main.transform.parent;
+                while (p) {
+                    v = p.GetComponent<Volume>() ?? p.GetComponentInChildren<Volume>(true);
+                    if (v) return v;
+                    p = p.parent;
+                }
+            }
+            foreach (var v in FindObjectsOfType<Volume>(true))
+                if (v.isGlobal) return v;
+            Debug.LogWarning("[StaminaVisualController] Volume 未找到。");
+            return null;
         }
 
         void OnEnable() {
