@@ -22,16 +22,12 @@ public class ResultState : IFishingState
     {
         if (success)
         {
-            Debug.Log($"玩家釣到：{fc.CurrentFishItem.data.fishName}");
-            Debug.Log("成功釣魚");
             panel.Bind(fc.CurrentFishItem);
             OnPanelClosed();
             hub.ShowFishInfo();
         }
         else
         {
-            Debug.Log("失敗");
-            // 失敗立刻掛餌
             fc.SwitchTo(FishingController.StateID.Baiting);
         }
     }
