@@ -19,7 +19,7 @@ namespace Game.Stamina
         public StateID CurrentID { get; private set; }
 
         public BlinkAnimationModule BlinkModule { get; private set; }
-        public StaminaVisualController VisualController { get; private set; }
+        public StaminaVisualModule VisualModule { get; private set; }
 
         public enum StateID
         {
@@ -47,8 +47,8 @@ namespace Game.Stamina
 
             Instance = this;
             DontDestroyOnLoad(gameObject);
+            VisualModule = GetComponent<StaminaVisualModule>();
             BlinkModule = GetComponentInChildren<BlinkAnimationModule>(true);
-            VisualController = GetComponent<StaminaVisualController>();
         }
 
         void Start()
@@ -78,7 +78,7 @@ namespace Game.Stamina
             }
         }
 
-        public void OnCatchFish() => ChangeStamina(-PerCatchCost);
+        public void OnCatchFish() => ChangeStamina(-PerCatchCost/100f);
 
         void TrySwitchState()
         {

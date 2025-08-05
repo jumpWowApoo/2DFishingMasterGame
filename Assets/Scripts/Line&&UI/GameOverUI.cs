@@ -8,7 +8,7 @@ namespace Game.Stamina {
             var ctx = StaminaController.Instance;
             ctx.ChangeStamina(ctx.Max - ctx.Current);
             InventoryMgr.Instance.Clear();
-            SceneManager.LoadScene("MainScene");
+            SceneManager.LoadScene("S1");
         }
     }
 }

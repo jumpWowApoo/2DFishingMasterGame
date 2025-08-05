@@ -4,7 +4,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 using Game.UI;
-using Game.Common;
+using Game.Stamina;
 
 [RequireComponent(typeof(FishingLine))]
 [RequireComponent(typeof(BobberMotion))]
@@ -122,6 +122,7 @@ public class FishingController : MonoBehaviour
     // 收線動畫結束後呼叫
     public void EndReel(bool success, bool needBait)
     {
+        if (success) StaminaController.Instance?.OnCatchFish();
         OnResult?.Invoke(success);
         if (needBait)
         {

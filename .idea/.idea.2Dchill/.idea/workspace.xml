@@ -5,17 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b3777719-99e7-4dea-aed2-4406d48ef5f7" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/Scenes/GameOverScene.unity" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scenes/GameOverScene.unity.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/State/Stamina/StaminaVisualModule.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.2Dchill/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.2Dchill/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Blink.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Blink.controller" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/eyeOpen.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/eyeOpen.anim" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/S1.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/S1.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/State/Stamina/BlinkAnimationModule.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/State/Stamina/BlinkAnimationModule.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/game_scene/Camera_left Profile.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/game_scene/Camera_left Profile.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Line&amp;&amp;UI/GameOverUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Line&amp;&amp;UI/GameOverUI.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/State/Fishing/FishingController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/State/Fishing/FishingController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/State/Stamina/ExhaustedState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/State/Stamina/ExhaustedState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/State/Stamina/NormalState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/State/Stamina/NormalState.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/State/Stamina/StaminaController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/State/Stamina/StaminaController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/State/Stamina/StaminaVisualController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/State/Stamina/StaminaVisualController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/State/Stamina/StaminaVisualController.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/State/Stamina/StaminaVisualController.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/State/Stamina/StaminaVisualModule.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/State/Stamina/TiredState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/State/Stamina/TiredState.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/State/Stamina/WearyHighState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/State/Stamina/WearyHighState.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/State/Stamina/WearyLowState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/State/Stamina/WearyLowState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Test/BlinkTester.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Test/BlinkTester.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,6 +32,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/685c48cf8f0b48abb797275c046dda6a158a00/13/fb8a47db/Coroutine.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/685c48cf8f0b48abb797275c046dda6a158a00/73/e299c19c/RectTransform.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/685c48cf8f0b48abb797275c046dda6a158a00/f1/757f7943/MonoBehaviour.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/ef8c5b14061044d1b5a7b543dce470f126e00/99/512c280a/Animation.cs" root0="SKIP_HIGHLIGHTING" />
@@ -46,7 +53,9 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Test/TestGUI.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.universal@12.1.8/Runtime/Overrides/ColorAdjustments.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/EventSystem/ExecuteEvents.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/EventSystem/UIBehaviour.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/UI/Core/Image.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/UI/Core/Selectable.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProblemsViewState">
@@ -134,7 +143,7 @@
       <workItem from="1753150528431" duration="25369000" />
       <workItem from="1753665662886" duration="22401000" />
       <workItem from="1753759443713" duration="14476000" />
-      <workItem from="1754356515529" duration="16545000" />
+      <workItem from="1754356515529" duration="25131000" />
     </task>
     <servers />
   </component>
