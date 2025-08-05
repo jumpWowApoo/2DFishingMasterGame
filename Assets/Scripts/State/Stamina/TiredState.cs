@@ -9,7 +9,6 @@ namespace Game.Stamina {
         }
         public void Tick(float dt) {}
         public void Exit() {
-            blink.SetBlink(0f,1f);
         }
     }
 }

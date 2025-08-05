@@ -12,7 +12,7 @@ namespace Game.Stamina
         public static StaminaController Instance { get; private set; }
 
         [Header("參數設定")] public float Max = 100f;
-        public float DecayRate = 1f;
+        //public float DecayRate = 1f;
         public float PerCatchCost = 5f;
 
         public float Current { get; private set; }
@@ -62,7 +62,7 @@ namespace Game.Stamina
         void Update()
         {
             float dt = Time.deltaTime;
-            ChangeStamina(-DecayRate * dt);
+            //ChangeStamina(-DecayRate * dt);
             currentState.Tick(dt);
             TrySwitchState();
         }

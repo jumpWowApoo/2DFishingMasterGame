@@ -8,7 +8,10 @@ namespace Game.Stamina {
     /// </summary>
     public class BlinkAnimationModule : MonoBehaviour {
         [SerializeField] Animator animator;
-        [SerializeField] string   blinkStateName = "Blink"; // Animator 中的狀態名稱
+        [SerializeField] string   blinkTrigger = "BlinkTrigger";
+        
+        public float CurrentInterval { get; private set; }  // ← 新增
+        public float CurrentSpeed    { get; private set; }  // ← 新增
 
         Coroutine blinkRoutine;
 
@@ -23,20 +26,27 @@ namespace Game.Stamina {
         /// <param name="speed">播放速度倍數 (1 = 正常)</param>
         public void SetBlink(float interval, float speed) {
             if (animator == null) return;
-
+            
             animator.speed = speed;
+            CurrentInterval = interval;      // ★ 記錄
+            CurrentSpeed    = speed;         // ★ 記錄
+            
+            if (blinkRoutine != null) {StopCoroutine(blinkRoutine);}
 
-            if (blinkRoutine != null) {
-                StopCoroutine(blinkRoutine);
-                blinkRoutine = null;
+            if (interval > 0f)
+            {
+                StartCoroutine(BlinkLoop(interval));
             }
-            if (interval > 0f) blinkRoutine = StartCoroutine(BlinkLoop(interval));
+            else
+            {
+                //animator.SetTrigger(blinkTrigger);
+            }
         }
 
         IEnumerator BlinkLoop(float interval) {
             while (true) {
                 yield return new WaitForSeconds(interval);
-                animator.Play(blinkStateName, 0, 0f);
+                animator.SetTrigger(blinkTrigger);
             }
         }
 
