@@ -89,7 +89,7 @@ namespace Game.Stamina
                 <= 0.25f => StateID.Exhausted,
                 <= 0.5f => StateID.WearyLow,
                 <= 0.7f => StateID.WearyHigh,
-                <= 0.8f => StateID.Tired,
+                <= 0.9f => StateID.Tired,
                 _ => StateID.Normal
             };
             if (newID != CurrentID) SwitchTo(newID);

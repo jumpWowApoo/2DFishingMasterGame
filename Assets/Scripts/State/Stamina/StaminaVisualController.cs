@@ -74,33 +74,28 @@ namespace Game.Stamina {
             if (!blinkModule || vignette == null || colorAdj == null) return;
 
             if (pct > 0.80f) {
-                blinkModule.SetBlink(0f, 0f);
                 vignette.intensity.value = 0f;
                 colorAdj.contrast.value  = 0f;
                 colorAdj.saturation.value= 0f;
             }
             else if (pct > 0.70f) {
-                blinkModule.SetBlink(10f, 1f);
                 vignette.intensity.value = 0f;
                 colorAdj.contrast.value  = 0f;
                 colorAdj.saturation.value= 0f;
             }
             else if (pct > 0.50f) {
-                blinkModule.SetBlink(5f, 1f);
                 vignette.intensity.value  = 0.15f;
                 vignette.smoothness.value = 1f;
                 colorAdj.contrast.value   = 10f;
                 colorAdj.saturation.value = -15f;
             }
             else if (pct > 0.25f) {
-                blinkModule.SetBlink(5f, 1.2f);
                 vignette.intensity.value  = 0.25f;
                 vignette.smoothness.value = 0.7f;
                 colorAdj.contrast.value   = 10f;
                 colorAdj.saturation.value = -15f;
             }
             else {
-                blinkModule.SetBlink(5f, 1.5f);
                 vignette.intensity.value  = 0.40f;
                 vignette.smoothness.value = 0.8f;
                 colorAdj.contrast.value   = 20f;

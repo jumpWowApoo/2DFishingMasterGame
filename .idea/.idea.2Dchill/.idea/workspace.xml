@@ -5,21 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b3777719-99e7-4dea-aed2-4406d48ef5f7" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Animations/eyeOpen.anim" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Animations/eyeOpen.anim.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Test/BlinkTester.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Test/BlinkTester.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.2Dchill/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.2Dchill/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Blink.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Blink.anim" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Animations/Blink.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Blink.controller" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/eyeOpen.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/eyeOpen.anim" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/S1.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/S1.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/State/Stamina/BlinkAnimationModule.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/State/Stamina/BlinkAnimationModule.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/State/Stamina/ExhaustedState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/State/Stamina/ExhaustedState.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/State/Stamina/StaminaController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/State/Stamina/StaminaController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/State/Stamina/StaminaVisualController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/State/Stamina/StaminaVisualController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/State/Stamina/TiredState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/State/Stamina/TiredState.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/State/Stamina/WearyHighState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/State/Stamina/WearyHighState.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/State/Stamina/WearyLowState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/State/Stamina/WearyLowState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Test/TestGUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Test/TestGUI.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Test/BlinkTester.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Test/BlinkTester.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,6 +44,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Line&amp;&amp;UI/UIHub.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Test/BlinkTester.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Test/TestGUI.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.universal@12.1.8/Runtime/Overrides/ColorAdjustments.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/EventSystem/ExecuteEvents.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/UI/Core/Image.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
@@ -137,7 +134,7 @@
       <workItem from="1753150528431" duration="25369000" />
       <workItem from="1753665662886" duration="22401000" />
       <workItem from="1753759443713" duration="14476000" />
-      <workItem from="1754356515529" duration="9969000" />
+      <workItem from="1754356515529" duration="16545000" />
     </task>
     <servers />
   </component>
@@ -165,25 +162,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/State/Stamina/BlinkAnimationModule.cs</url>
-          <line>50</line>
-          <properties documentPath="D:\desktop_link\GAME\2Dchill\Assets\Scripts\State\Stamina\BlinkAnimationModule.cs" containingFunctionPresentation="Method 'BlinkLoop'">
-            <startOffsets>
-              <option value="1675" />
-            </startOffsets>
-            <endOffsets>
-              <option value="1676" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

@@ -5,7 +5,7 @@ namespace Game.Stamina {
         BlinkAnimationModule blink;
         public void Enter(StaminaController ctx) {
             blink = ctx.BlinkModule;
-            blink.SetBlink(5f,1.5f);
+            blink.SetBlink(5f,2f);
         }
         public void Tick(float dt) {}
         public void Exit() {

@@ -1,58 +1,76 @@
 using System.Collections;
 using UnityEngine;
 
-namespace Game.Stamina {
+namespace Game.Stamina
+{
     /// <summary>
-    /// 控制眨眼動畫：直接播放指定 State，並以 Animator.speed 調整速度。
-    /// 如果未手動綁定 Animator，將自動在子物件搜尋。
+    /// 每隔 interval 秒觸發 BlinkTrigger，一進入新階段先眨一次。
     /// </summary>
-    public class BlinkAnimationModule : MonoBehaviour {
+    public class BlinkAnimationModule : MonoBehaviour
+    {
         [SerializeField] Animator animator;
-        [SerializeField] string   blinkTrigger = "BlinkTrigger";
-        
-        public float CurrentInterval { get; private set; }  // ← 新增
-        public float CurrentSpeed    { get; private set; }  // ← 新增
+        [SerializeField] string blinkTrigger = "BlinkTrigger";
+
+        public float CurrentInterval { get; private set; }
+        public float CurrentSpeed { get; private set; }
 
         Coroutine blinkRoutine;
 
-        void Awake() {
-            if (animator == null)
-                animator = GetComponentInChildren<Animator>(true);
-            if (animator == null)
-                Debug.LogWarning("[BlinkAnimationModule] 找不到 Animator，眨眼功能將停用。");
+        void Awake()
+        {
+            if (!animator) animator = GetComponentInChildren<Animator>(true);
+            if (!animator)
+                Debug.LogWarning("[BlinkAnimationModule] 無 Animator，眨眼停用。");
         }
 
-        /// <param name="interval">眨眼間隔（秒），<=0 代表停用</param>
-        /// <param name="speed">播放速度倍數 (1 = 正常)</param>
-        public void SetBlink(float interval, float speed) {
-            if (animator == null) return;
-            
+        /// <param name="interval">眨眼間隔 (秒)。<=0 停用</param>
+        /// <param name="speed">Animator.speed 倍速 (1=正常)</param>
+        public void SetBlink(float interval, float speed)
+        {
+            if (!animator) return;
+
+            /* 相同設定就別重設，避免反覆觸發 */
+            if (Mathf.Approximately(interval, CurrentInterval) &&
+                Mathf.Approximately(speed, CurrentSpeed))
+                return;
+
+            CurrentInterval = interval;
+            CurrentSpeed = speed;
             animator.speed = speed;
-            CurrentInterval = interval;      // ★ 記錄
-            CurrentSpeed    = speed;         // ★ 記錄
-            
-            if (blinkRoutine != null) {StopCoroutine(blinkRoutine);}
 
-            if (interval > 0f)
+            /* 先停舊協程 */
+            if (blinkRoutine != null)
             {
-                StartCoroutine(BlinkLoop(interval));
+                StopCoroutine(blinkRoutine);
+                blinkRoutine = null;
             }
-            else
-            {
-                //animator.SetTrigger(blinkTrigger);
-            }
+
+            /* interval <= 0 → 完全停用眨眼 */
+            if (interval <= 0f) return;
+
+            /* 立即眨一次（Reset→Set 保證旗標清乾淨） */
+            animator.ResetTrigger(blinkTrigger);
+            animator.SetTrigger(blinkTrigger);
+
+            /* 再啟新的固定間隔協程 */
+            blinkRoutine = StartCoroutine(BlinkLoop(interval));
         }
 
-        IEnumerator BlinkLoop(float interval) {
-            while (true) {
+        IEnumerator BlinkLoop(float interval)
+        {
+            while (true)
+            {
+                animator.ResetTrigger(blinkTrigger); // 清舊旗標
+                animator.SetTrigger(blinkTrigger); // 送新旗標
                 yield return new WaitForSeconds(interval);
-                animator.SetTrigger(blinkTrigger);
             }
         }
 
-        void OnDisable() {
-            if (animator) animator.speed = 1f;
+        void OnDisable()
+        {
             if (blinkRoutine != null) StopCoroutine(blinkRoutine);
+            blinkRoutine = null;
+            if (animator) animator.speed = 1f;
         }
     }
 }
