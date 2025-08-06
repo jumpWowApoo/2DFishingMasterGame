@@ -29,7 +29,7 @@ public class FishingController : MonoBehaviour
     public Transform targetPos;
     public GameObject bobberPrefab;
 
-    [Header("魚資料庫與 UI")] [SerializeField] FishDatabase db; // ★ 新增
+    [Header("魚資料庫與 UI")] [SerializeField] FishDatabase db;
     [SerializeField] FishInfoPanel infoPanel;
     [SerializeField] UIHub uiHub;
 

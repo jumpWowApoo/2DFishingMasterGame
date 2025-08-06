@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4477135ecbbd33d4d8ab379a2059e890, type: 3}
+  m_Name: Mission02
+  m_EditorClassIdentifier: 
+  missionId: 02
+  title: "\u7F8E\u5473\u7684\u4F73\u991A?"
+  description: "\u53E4\u602A\u7684\u98DF\u5BA2\u8981\u6C422\u689D\u85CD\u8272\u7684\u9B5A
+    \u8207 1\u689D \u7DA0\u8272\u7684\u9B5A"
+  needs:
+  - fishId: 01
+    count: 2
+  - fishId: 03
+    count: 1

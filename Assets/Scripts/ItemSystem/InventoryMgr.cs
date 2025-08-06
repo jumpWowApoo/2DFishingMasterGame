@@ -62,5 +62,30 @@ namespace Game.Inventory
         {
             for (int i = 0; i < slots.Length; i++) slots[i] = null;
         }
+        
+        public bool RemoveFirst(string itemId)
+        {
+            for (int i = 0; i < slots.Length; i++)
+            {
+                if (slots[i] is FishItem fi && fi.id== itemId)
+                {
+                    slots[i] = null;
+                    OnSlotChanged?.Invoke(i);
+                    return true;
+                }
+            }
+            Debug.LogWarning($"背包裡找不到 {itemId}");
+            return false;
+        }
+
+        /// <summary>尋找第一個空格 index，找不到回傳 -1</summary>
+        public int FirstEmptySlot()
+        {
+            for (int i = 0; i < slots.Length; i++)
+                if (slots[i] == null) return i;
+            return -1;
+        }
     }
+    
+    
 }

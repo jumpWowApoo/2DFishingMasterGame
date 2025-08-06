@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4c6753bb68f51d4398a735479676aa2, type: 3}
   m_Name: Fish_2
   m_EditorClassIdentifier: 
+  fishId: 02
   fishName: "\u7D05\u9B5A"
   icon: {fileID: 21300000, guid: 7eb6ce610709f4244a31d8a89a2f1c07, type: 3}
   bigImage: {fileID: 21300000, guid: 513b73f82cdd42c4bbd7c54d94ab963b, type: 3}
