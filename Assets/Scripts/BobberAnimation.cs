@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 [RequireComponent(typeof(Animator))]
 public class BobberAnimation : MonoBehaviour
@@ -16,14 +17,14 @@ public class BobberAnimation : MonoBehaviour
     [SerializeField] float floatLen = 0f;
     [SerializeField] float sinkLen  = 0.3f;
 
-    [SerializeField] Animator forceAnimator;
+    [FormerlySerializedAs("forceAnimator")] [SerializeField] Animator targetAnimator;
     Animator ani;
 
     void Awake()
     {
-        ani = GetComponent<Animator>();
-        ani = forceAnimator ? forceAnimator :
-            GetComponent<Animator>() ?? GetComponentInChildren<Animator>(true);
+        ani = targetAnimator ??
+              GetComponent<Animator>() ??
+              GetComponentInChildren<Animator>(true);
 
         Debug.Log($"[BobberAnimation] 找到 Animator & Controller：{ani.runtimeAnimatorController.name}", this);
         AutoLen(ref idleLen,  idleState);
