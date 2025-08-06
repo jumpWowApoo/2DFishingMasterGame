@@ -38,7 +38,7 @@ public class MissionMgr : MonoBehaviour
 
     IEnumerator DelaySwitch()
     {
-        yield return new WaitForSeconds(5f);             // 顯示「更新中…」的時間
+        yield return new WaitForSeconds(2f);             // 顯示「更新中…」的時間
         LoadNextMission();                               // 之後才廣播 OnMissionChanged
     }
 
