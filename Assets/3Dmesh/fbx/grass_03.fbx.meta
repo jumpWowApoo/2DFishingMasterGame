@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 8ac8c78c8c0ae65458564a224b266940
+guid: 49d2276106bf18d4db09c040c113e85a
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
@@ -7,11 +7,11 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: _Splash
-    second: {fileID: 2100000, guid: 26e57b8c33002f346b767ac18b783421, type: 2}
+      name: 3D_grass_tex
+    second: {fileID: 2100000, guid: a64cfe5a2b379024b90de02249a74981, type: 2}
   materials:
     materialImportMode: 2
-    materialName: 1
+    materialName: 0
     materialSearch: 1
     materialLocation: 1
   animations:

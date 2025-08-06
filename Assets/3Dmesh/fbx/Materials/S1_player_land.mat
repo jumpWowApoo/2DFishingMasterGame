@@ -40,7 +40,7 @@ Material:
     m_Floats:
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _emiss: 0.48
+    - _emiss: 1
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 0}
     - _UV_tile: {r: 1, g: 1, b: 0, a: 0}
