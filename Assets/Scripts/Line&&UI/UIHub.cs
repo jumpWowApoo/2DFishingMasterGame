@@ -10,6 +10,7 @@ public class UIHub : MonoBehaviour
     [SerializeField] GameObject inventoryWindow;
     [SerializeField] GameObject missionWindow;
     [SerializeField] GameObject shopWindow;
+    [SerializeField] GameObject AudioWindow;
     
     [Header("拖影父層 (DragLayer)")]
     [SerializeField] RectTransform dragLayer; 
@@ -20,6 +21,14 @@ public class UIHub : MonoBehaviour
         Instance = this;
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            ToggleAudio();
+        }
+    }
+
 
     public void CloseAll()
     {
@@ -27,6 +36,7 @@ public class UIHub : MonoBehaviour
         inventoryWindow.SetActive(false);
         missionWindow.SetActive(false);
         shopWindow.SetActive(false);
+        AudioWindow.SetActive(false);
     }
 
     public void ShowFishInfo() => fishInfoWindow.SetActive(true);
@@ -38,6 +48,8 @@ public class UIHub : MonoBehaviour
 
     public void ToggleShop() =>
         shopWindow.SetActive(!shopWindow.activeSelf);
+
+    public void ToggleAudio() => AudioWindow.SetActive(!AudioWindow.activeSelf);
     
     public RectTransform DragLayer => dragLayer;
 }

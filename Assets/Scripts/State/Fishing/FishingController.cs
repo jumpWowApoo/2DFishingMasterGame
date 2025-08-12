@@ -69,7 +69,7 @@ public class FishingController : MonoBehaviour
         FishingStateRef = new FishingState(this, waitRange, reelButton, rodAnim);
         map[StateID.Fishing] = FishingStateRef;
 
-        map[StateID.FishBite] = new FishBiteState(this, biteAutoTime, reelButton,successWindow, rodAnim);
+        map[StateID.FishBite] = new FishBiteState(this, biteAutoTime, reelButton, successWindow, rodAnim);
         map[StateID.Baiting] = new BaitingState(this, rodAnim, castButton, reelButton);
 
 
@@ -113,6 +113,7 @@ public class FishingController : MonoBehaviour
     // 初始化 Reeling
     public void BeginReel(bool success, bool needBait)
     {
+        Debug.Log($"[BeginReel] success={success} needBait={needBait} t={Time.time:F3} f={Time.frameCount}");
         current?.OnExit();
         current = CreateReelInState(success, needBait);
         CurrentID = StateID.ReelIn;
@@ -122,6 +123,7 @@ public class FishingController : MonoBehaviour
     // 收線動畫結束後呼叫
     public void EndReel(bool success, bool needBait)
     {
+        Debug.Log($"[EndReel] success={success} needBait={needBait} t={Time.time:F3} f={Time.frameCount}");
         if (success) StaminaController.Instance?.OnCatchFish();
         OnResult?.Invoke(success);
         if (needBait)

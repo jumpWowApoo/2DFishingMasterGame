@@ -30,6 +30,7 @@ public class CastingState : IFishingState
 
     public void OnEnter()
     {
+        AudioHub.I.PlayRod(RodSfx.Cast, rodTip);
         castBtn.gameObject.SetActive(false);
         reelBtn.gameObject.SetActive(true);
         fc.StartCoroutine(Flow());

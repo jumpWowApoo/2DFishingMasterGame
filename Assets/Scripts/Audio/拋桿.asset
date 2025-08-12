@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0cfdbd8ee4a9b04986ec9d97a09b83c, type: 3}
+  m_Name: "\u62CB\u687F"
+  m_EditorClassIdentifier: 
+  clips:
+  - {fileID: 8300000, guid: 6abf116de497b194388e99aab2e34d6a, type: 3}
+  baseVolume: 1
+  volumeRandomDb: 0
+  basePitch: 1
+  pitchRandom: 0.05
+  loop: 0

@@ -6,10 +6,11 @@ public class FishBiteState : IFishingState
     readonly FishingController fc;
     readonly float autoT, win;
     float t;
-    private readonly RodAnimation rodAnim;
-    private readonly Button reelBut;
+    readonly RodAnimation rodAnim;
+    readonly Button reelBut;
+    bool subscribed;
 
-    public FishBiteState(FishingController fc, float auto, Button reel,float win, RodAnimation rodAnim)
+    public FishBiteState(FishingController fc, float auto, Button reel, float win, RodAnimation rodAnim)
     {
         this.fc = fc;
         autoT = auto;
@@ -20,36 +21,58 @@ public class FishBiteState : IFishingState
 
     public void OnEnter()
     {
-        t = 0;
+        t = 0f;
         Debug.Log("魚漂下沉！");
-        var bobAnim = fc.CurrentBobber.GetComponent<BobberAnimation>();
-        fc.StartCoroutine(bobAnim.Play(BobberAnimation.Clip.Sink));
+
+        var bobAnim = fc.CurrentBobber ? fc.CurrentBobber.GetComponent<BobberAnimation>() : null;
+        if (bobAnim) fc.StartCoroutine(bobAnim.Play(BobberAnimation.Clip.Sink));
+
+        // ★ 只在進入時綁一次
+        if (!subscribed)
+        {
+            reelBut.onClick.AddListener(OnReelClicked);
+            subscribed = true;
+        }
+        reelBut.interactable = true; // 可按
     }
 
     public void Tick()
     {
         t += Time.deltaTime;
-        
-        reelBut.onClick.AddListener(OnReelClicked);
 
-        // 超過時間自動失敗並掛餌
+        // ★ 逾時自動失敗（先解綁再進下一步）
         if (t >= autoT)
         {
-            // 移除監聽，避免後續重複觸發
-            reelBut.onClick.RemoveListener(OnReelClicked);
+            Debug.Log("下沉後掉魚失敗");
+            SafeUnsubscribe();
+            reelBut.interactable = false;
             fc.BeginReel(false, true);
         }
     }
 
     public void OnExit()
     {
-        // ★ 在離開狀態時一定要移除監聽
-        reelBut.onClick.RemoveListener(OnReelClicked);
+        SafeUnsubscribe();
+        reelBut.interactable = true; // 歸還控制權
     }
 
-    private void OnReelClicked()
+    void OnReelClicked()
     {
-        reelBut.onClick.RemoveListener(OnReelClicked);
-        fc.BeginReel(t <= win, true);
+        // 先解綁避免同幀/多次觸發
+        SafeUnsubscribe();
+        reelBut.interactable = false;
+
+        bool isSuccess = (t <= win);
+        Debug.Log(isSuccess ? "下沉後掉魚成功" : "下沉後掉魚失敗(太慢)");
+        fc.BeginReel(isSuccess, true);
+    }
+
+    void SafeUnsubscribe()
+    {
+        if (subscribed)
+        {
+            reelBut.onClick.RemoveListener(OnReelClicked);
+            subscribed = false;
+        }
     }
 }

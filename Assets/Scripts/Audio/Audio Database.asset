@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8afbd7e4d803d24e8217e318cb46ca6, type: 3}
+  m_Name: Audio Database
+  m_EditorClassIdentifier: 
+  rod:
+  - key: 4
+    cue: {fileID: 11400000, guid: af425439fb771654d94bb8fce1c1b764, type: 2}
+  - key: 3
+    cue: {fileID: 11400000, guid: 247b6603b8702ab4ba143c7d247823fe, type: 2}
+  - key: 0
+    cue: {fileID: 11400000, guid: 014aea43140a140478bba2e7341f4ec0, type: 2}
+  bobber: []
+  creature: []
+  bgm:
+  - key: 1
+    clip: {fileID: 8300000, guid: 0f578af4d9b6aa34786f3eb323cba810, type: 3}

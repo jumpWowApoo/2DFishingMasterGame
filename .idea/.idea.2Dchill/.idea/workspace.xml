@@ -5,16 +5,35 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b3777719-99e7-4dea-aed2-4406d48ef5f7" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Audio.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Audio/Audio Database.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Audio/Audio Database.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Audio/AudioCue.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Audio/AudioCue.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Audio/AudioDatabase.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Audio/AudioDatabase.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Audio/AudioEvents.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Audio/AudioEvents.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Audio/AudioHub.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Audio/AudioHub.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Audio/AudioMixer.mixer" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Audio/AudioMixer.mixer.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Audio/VolumeSlider.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Audio/VolumeSlider.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Audio/拉魚失敗.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Audio/拉魚失敗.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Audio/拉魚成功.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Audio/拉魚成功.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Audio/拋桿.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Audio/拋桿.asset.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.2Dchill/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.2Dchill/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/UI/UIHub.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/UI/UIHub.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/UI/按鍵UI介面.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/UI/按鍵UI介面.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/S1.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/S1.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Line&amp;&amp;UI/UIHub.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Line&amp;&amp;UI/UIHub.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MissionSystem/Mission01.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MissionSystem/Mission01.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MissionSystem/Mission02.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MissionSystem/Mission02.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MissionSystem/Mission03.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MissionSystem/Mission03.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MissionSystem/MissionData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MissionSystem/MissionData.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MissionSystem/MissionMgr.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MissionSystem/MissionMgr.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/State/Fishing/CastingState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/State/Fishing/CastingState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/State/Fishing/FishBiteState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/State/Fishing/FishBiteState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/State/Fishing/FishingController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/State/Fishing/FishingController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/State/Fishing/ResultState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/State/Fishing/ResultState.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,6 +47,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/685c48cf8f0b48abb797275c046dda6a158a00/10/27b56c71/UnityEventBase.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/685c48cf8f0b48abb797275c046dda6a158a00/13/fb8a47db/Coroutine.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/685c48cf8f0b48abb797275c046dda6a158a00/73/e299c19c/RectTransform.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/685c48cf8f0b48abb797275c046dda6a158a00/d4/cee98823/UnityEvent.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/685c48cf8f0b48abb797275c046dda6a158a00/f1/757f7943/MonoBehaviour.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/ef8c5b14061044d1b5a7b543dce470f126e00/99/512c280a/Animation.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/ef8c5b14061044d1b5a7b543dce470f126e00/ad/825a2aee/Animator.cs" root0="SKIP_HIGHLIGHTING" />
@@ -142,7 +162,7 @@
       <workItem from="1753759443713" duration="14476000" />
       <workItem from="1754356515529" duration="25690000" />
       <workItem from="1754445738585" duration="22561000" />
-      <workItem from="1754962375055" duration="2592000" />
+      <workItem from="1754962375055" duration="16218000" />
     </task>
     <servers />
   </component>

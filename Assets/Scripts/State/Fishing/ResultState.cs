@@ -8,6 +8,7 @@ public class ResultState : IFishingState
     readonly bool success;
     readonly FishInfoPanel panel;
     readonly UIHub hub;
+    
 
     public ResultState(FishingController fc, bool success,
         FishInfoPanel panel, UIHub hub)
@@ -22,12 +23,16 @@ public class ResultState : IFishingState
     {
         if (success)
         {
+            Debug.Log("成功");
+            AudioHub.I.PlayRod(RodSfx.ResultSuccess);
             panel.Bind(fc.CurrentFishItem);
             OnPanelClosed();
             hub.ShowFishInfo();
         }
         else
         {
+            Debug.Log("失敗");
+            AudioHub.I.PlayRod(RodSfx.ResultFail);
             fc.SwitchTo(FishingController.StateID.Baiting);
         }
     }
