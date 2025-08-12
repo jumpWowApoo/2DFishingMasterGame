@@ -39,7 +39,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _Texture2D:
-        m_Texture: {fileID: 2800000, guid: 7984d829c00b4a64886554030c6cb204, type: 3}
+        m_Texture: {fileID: 2800000, guid: 8d6177d0218dbf445b9fec063907779b, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Texture2D_1:
@@ -74,15 +74,23 @@ Material:
     - _ZTest: 4
     - _ZWrite: 0
     - _ZWriteControl: 0
-    - _alpha: 0.68
-    - _deepth: 16.94
-    - _emiss: 0.26
-    - _fram: 0.5
+    - _alpha: 1.83
+    - _cansee: 14.72
+    - _cansee_add: 0.55
+    - _deepth: 11.3
+    - _emiss: -1.15
+    - _far: 2.3
+    - _fram: 0.35
+    - _tile: 115.1
+    - _waterAlpha: 0.65
     - _water_fram: 0.24
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 0}
-    - _dark_water: {r: 0.007843137, g: 0.25490198, b: 0.1749827, a: 0}
+    - _dark_water: {r: 0, g: 0.43689036, b: 0.5377358, a: 0}
+    - _far_water: {r: 0.28515485, g: 0.571766, b: 0.6792453, a: 0}
     - _fram_color: {r: 1, g: 1, b: 1, a: 0}
-    - _light_water_1: {r: 0.2235294, g: 1, b: 0.66672313, a: 0}
+    - _light_water: {r: 0.40250087, g: 0.6320754, b: 0.587721, a: 0}
+    - _light_water_1: {r: 0, g: 0.4274441, b: 0.5283019, a: 0}
+    - _light_water_2: {r: 0.44535422, g: 0.6792453, b: 0.6730248, a: 0}
     - _water_fram_Color: {r: 0.5471698, g: 0.5471698, b: 0.5471698, a: 0}
   m_BuildTextureStacks: []
