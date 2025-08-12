@@ -18,4 +18,5 @@ MonoBehaviour:
     \"\u7D05\u8272\u7684\u9B5A\""
   needs:
   - fishId: 02
-    count: 3
+    count: 1
+  rewardGold: 30

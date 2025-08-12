@@ -8,4 +8,7 @@ public class MissionData : ScriptableObject
     public string title;
     [TextArea] public string description;
     public List<MissionRequirement> needs = new();
+    
+    [Header("Rewards")]
+    public int rewardGold = 0;
 }

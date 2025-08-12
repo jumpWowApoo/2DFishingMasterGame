@@ -21,3 +21,4 @@ MonoBehaviour:
     count: 2
   - fishId: 03
     count: 1
+  rewardGold: 20

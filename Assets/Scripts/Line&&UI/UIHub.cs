@@ -8,7 +8,8 @@ public class UIHub : MonoBehaviour
 
     [SerializeField] GameObject fishInfoWindow;
     [SerializeField] GameObject inventoryWindow;
-    [SerializeField] GameObject missionWindow; 
+    [SerializeField] GameObject missionWindow;
+    [SerializeField] GameObject shopWindow;
     
     [Header("拖影父層 (DragLayer)")]
     [SerializeField] RectTransform dragLayer; 
@@ -25,6 +26,7 @@ public class UIHub : MonoBehaviour
         fishInfoWindow.SetActive(false);
         inventoryWindow.SetActive(false);
         missionWindow.SetActive(false);
+        shopWindow.SetActive(false);
     }
 
     public void ShowFishInfo() => fishInfoWindow.SetActive(true);
@@ -33,6 +35,9 @@ public class UIHub : MonoBehaviour
     public void HideMission()  => missionWindow.SetActive(false);
     public void ToggleMission() =>
         missionWindow.SetActive(!missionWindow.activeSelf);
+
+    public void ToggleShop() =>
+        shopWindow.SetActive(!shopWindow.activeSelf);
     
     public RectTransform DragLayer => dragLayer;
 }
