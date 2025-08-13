@@ -9,9 +9,8 @@ namespace Game.UI
     public class ItemSlot : MonoBehaviour,
         IPointerClickHandler, IDropHandler
     {
-        [Header("UI Refs")]
-        [SerializeField] Image icon;
-        [SerializeField] Text  label;
+        [Header("UI Refs")] [SerializeField] Image icon;
+        [SerializeField] Text label;
 
         int index;
 
@@ -36,17 +35,17 @@ namespace Game.UI
             if (item != null)
             {
                 icon.enabled = true;
-                icon.sprite  = item.Icon;
+                icon.sprite = item.Icon;
                 if (label)
                 {
                     label.enabled = true;
-                    label.text    = item.Name;
+                    label.text = item.Name;
                 }
             }
             else
             {
                 icon.enabled = false;
-                icon.sprite  = null;
+                icon.sprite = null;
                 if (label) label.enabled = false;
             }
         }
