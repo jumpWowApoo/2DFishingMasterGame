@@ -26,6 +26,7 @@ public class FishingState : IFishingState
 
     public void OnEnter()
     {
+        AudioHub.I.PlayBobber(BobberSfx.Float);
         _timer = Random.Range(rng.x, rng.y);
         WaitTotal = _timer;
         reelBtn.onClick.AddListener(OnEarlyReel);

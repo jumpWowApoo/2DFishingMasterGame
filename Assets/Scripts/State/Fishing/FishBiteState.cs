@@ -21,6 +21,8 @@ public class FishBiteState : IFishingState
 
     public void OnEnter()
     {
+        AudioHub.I.PlayRod(RodSfx.Bite);
+        AudioHub.I.PlayBobber(BobberSfx.Bite);
         t = 0f;
         Debug.Log("魚漂下沉！");
 

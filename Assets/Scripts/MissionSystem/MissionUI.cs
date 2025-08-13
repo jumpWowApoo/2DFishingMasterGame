@@ -1,7 +1,10 @@
+/* MissionUI.cs */
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
+using Game.Inventory;
 
 public class MissionUI : MonoBehaviour
 {
@@ -18,7 +21,6 @@ public class MissionUI : MonoBehaviour
     readonly List<MissionSlotUI> slots = new();
     [SerializeField] MissionMgr missionManager;
 
-    /* ───── 事件綁定 ───── */
     void OnEnable()
     {
         if (missionManager != null)
@@ -36,15 +38,10 @@ public class MissionUI : MonoBehaviour
         missionManager.OnMissionComplete -= HandleMissionComplete;
     }
 
-    /* ───── 生成任務格子 ───── */
     void BuildUI(MissionData data)
     {
-        List<MissionSlotUI> existing = slotHolder.GetComponentsInChildren<MissionSlotUI>(true).ToList();
-        foreach (var s in existing)
-        {
-            s.gameObject.SetActive(false);
-            slots.Remove(s);
-        }
+        var existing = slotHolder.GetComponentsInChildren<MissionSlotUI>(true).ToList();
+        foreach (var s in existing) { s.gameObject.SetActive(false); slots.Remove(s); }
 
         panelMain.SetActive(true);
         txtTitle.gameObject.SetActive(true);
@@ -53,29 +50,19 @@ public class MissionUI : MonoBehaviour
         txtUpdating.gameObject.SetActive(false);
 
         txtTitle.text = data.title;
-        txtDesc.text = data.description;
-
-        int needTotal = data.needs.Sum(n => n.count);
-        int idx = 0;
+        txtDesc.text  = data.description;
 
         foreach (var s in slots) Destroy(s.gameObject);
         slots.Clear();
+
+        int idx = 0;
         foreach (var req in data.needs)
         {
             for (int i = 0; i < req.count; i++, idx++)
             {
                 MissionSlotUI slot;
-
-                // 優先重用已存在的
-                if (idx < existing.Count)
-                {
-                    slot = existing[idx];
-                    slot.gameObject.SetActive(true);
-                }
-                else
-                {
-                    slot = Instantiate(slotPrefab, slotHolder);
-                }
+                if (idx < existing.Count) { slot = existing[idx]; slot.gameObject.SetActive(true); }
+                else                      { slot = Instantiate(slotPrefab, slotHolder); }
 
                 slot.ResetSlot(req.fishId);
                 slot.OnItemChanged -= CheckFilled;
@@ -83,17 +70,14 @@ public class MissionUI : MonoBehaviour
                 slots.Add(slot);
             }
         }
-
         btnConfirm.onClick.RemoveAllListeners();
         btnConfirm.onClick.AddListener(OnClickConfirm);
 
         CheckFilled();
     }
 
-    /* ───── 驗證填滿 ───── */
     void CheckFilled()
     {
-        // 統計當前已放入的魚種與數量
         Dictionary<string,int> counts = new();
         foreach (var s in slots)
         {
@@ -103,7 +87,6 @@ public class MissionUI : MonoBehaviour
             counts[id]++;
         }
 
-        // 驗證是否符合 Mission 需求
         bool ready = true;
         foreach (var req in missionManager.Current.needs)
         {
@@ -115,15 +98,20 @@ public class MissionUI : MonoBehaviour
         blocker.SetActive(!ready);
     }
 
-
-    /* ───── 按下確認 ───── */
     void OnClickConfirm()
     {
-        var delivered = slots.Select(s => s.HeldItem).ToList();
+        if (SessionRunLog.I != null && missionManager != null && missionManager.Current != null)
+            SessionRunLog.I.LogMission(missionManager.Current, 0);
+        
+        var delivered = slots.Select(s => s.HeldItem).Where(it => it != null).ToList();
+
+        // ★ 結算同步：任務交付的每條魚，從魚箱扣掉 1
+        foreach (var item in delivered)
+            FishCrate.I.Remove(item.data, 1);
+
         missionManager.Submit(delivered);
     }
 
-    /* ───── 任務完成 → 更新動畫 ───── */
     void HandleMissionComplete()
     {
         txtTitle.gameObject.SetActive(false);
@@ -131,8 +119,6 @@ public class MissionUI : MonoBehaviour
         slotHolder.gameObject.SetActive(false);
         txtUpdating.gameObject.SetActive(true);
     }
-    
-    public void Hide()
-    { panelMain.SetActive(false); }
 
+    public void Hide() { panelMain.SetActive(false); }
 }

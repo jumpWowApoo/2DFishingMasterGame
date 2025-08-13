@@ -15,7 +15,7 @@ MonoBehaviour:
   clips:
   - {fileID: 8300000, guid: 6abf116de497b194388e99aab2e34d6a, type: 3}
   baseVolume: 1
-  volumeRandomDb: 0
+  volumeRandomDb: 1
   basePitch: 1
   pitchRandom: 0.05
   loop: 0

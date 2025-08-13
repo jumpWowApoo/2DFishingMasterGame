@@ -60,7 +60,7 @@ namespace Game.Inventory
         /// <summary>清空全部背包</summary>
         public void Clear()
         {
-            for (int i = 0; i < slots.Length; i++) slots[i] = null;
+            for (int i = 0; i < slots.Length; i++) {slots[i] = null; OnSlotChanged?.Invoke(i);}  
         }
         
         public bool RemoveFirst(string itemId)

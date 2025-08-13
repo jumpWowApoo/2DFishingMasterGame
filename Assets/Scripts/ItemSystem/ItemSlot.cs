@@ -23,7 +23,7 @@ namespace Game.UI
         public void Bind(int idx, InventoryItemBase item)
         {
             index = idx;
-            
+
             // 先初始化拖曳把手 (只有魚可拖)
             if (item is FishItem fish)
             {
@@ -54,7 +54,16 @@ namespace Game.UI
         public void OnPointerClick(PointerEventData e)
         {
             if (e.button == PointerEventData.InputButton.Right)
+            {
+                // ★ 同步魚箱：若刪的是魚，魚箱也要扣 1，避免結算還算到錢
+                var item = InventoryMgr.Instance.Items[index];
+                if (item is FishItem fish && FishCrate.I != null)
+                {
+                    FishCrate.I.Remove(fish.data, 1);
+                }
+
                 InventoryMgr.Instance.RemoveAt(index);
+            }
         }
 
         public void OnDrop(PointerEventData e)
@@ -64,13 +73,15 @@ namespace Game.UI
 
             if (DragInfo.FromInventory)
             {
+                // 背包內移動，不影響魚箱
                 InventoryMgr.Instance.Move(DragInfo.OriginSlotIndex, index);
             }
             else
             {
+                // 從外部（例如任務格）拖回來 → 只是回到背包，魚箱不變
                 InventoryMgr.Instance.AddAt(index, fish);
             }
-            
+
             Bind(index, fish);
             DragInfo.CurrentDragged = null;
         }

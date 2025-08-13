@@ -39,6 +39,7 @@ public class ReelInState : IFishingState
 
     public void OnEnter()
     {
+        AudioHub.I.PlayRod(RodSfx.Reel);
         fc.StartCoroutine(ReelFlow());
     }
 

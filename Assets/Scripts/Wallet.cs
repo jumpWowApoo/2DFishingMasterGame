@@ -16,7 +16,7 @@ namespace Game.Currency
         {
             if (Instance && Instance != this) { Destroy(gameObject); return; }
             Instance = this;
-            // 若要跨場景存活：DontDestroyOnLoad(gameObject);
+            DontDestroyOnLoad(gameObject);
             OnGoldChanged?.Invoke(gold);
         }
 

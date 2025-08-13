@@ -8,15 +8,15 @@ public class ResultState : IFishingState
     readonly bool success;
     readonly FishInfoPanel panel;
     readonly UIHub hub;
-    
+
 
     public ResultState(FishingController fc, bool success,
         FishInfoPanel panel, UIHub hub)
     {
-        this.fc      = fc;
+        this.fc = fc;
         this.success = success;
-        this.panel   = panel;
-        this.hub     = hub;
+        this.panel = panel;
+        this.hub = hub;
     }
 
     public void OnEnter()
@@ -25,6 +25,8 @@ public class ResultState : IFishingState
         {
             Debug.Log("成功");
             AudioHub.I.PlayRod(RodSfx.ResultSuccess);
+            if (fc.CurrentFishItem != null)
+                FishCrate.I.Add(fc.CurrentFishItem);
             panel.Bind(fc.CurrentFishItem);
             OnPanelClosed();
             hub.ShowFishInfo();
@@ -37,7 +39,9 @@ public class ResultState : IFishingState
         }
     }
 
-    public void Tick() { }
+    public void Tick()
+    {
+    }
 
     public void OnExit() => hub.HideFishInfo();
 

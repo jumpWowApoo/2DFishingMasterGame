@@ -22,6 +22,7 @@ public class BaitingState : IFishingState
 
     public void OnEnter()
     {
+        AudioHub.I.PlayRod(RodSfx.Bait);
         castBtn.gameObject.SetActive(true);
         reelBtn.gameObject.SetActive(false);
         fc.StartCoroutine(WaitAndReturn());

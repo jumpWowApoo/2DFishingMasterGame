@@ -25,8 +25,6 @@ public class BobberAnimation : MonoBehaviour
         ani = targetAnimator ??
               GetComponent<Animator>() ??
               GetComponentInChildren<Animator>(true);
-
-        Debug.Log($"[BobberAnimation] 找到 Animator & Controller：{ani.runtimeAnimatorController.name}", this);
         AutoLen(ref idleLen,  idleState);
         AutoLen(ref floatLen, floatState);
         AutoLen(ref sinkLen,  sinkState);
