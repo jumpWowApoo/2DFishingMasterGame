@@ -65,6 +65,7 @@ Material:
     - _CastShadows: 0
     - _Cull: 2
     - _DstBlend: 10
+    - _Float: 0.025
     - _QueueControl: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 0
@@ -74,22 +75,25 @@ Material:
     - _ZTest: 4
     - _ZWrite: 0
     - _ZWriteControl: 0
-    - _alpha: 1.83
-    - _cansee: 14.72
-    - _cansee_add: 0.55
-    - _deepth: 11.3
+    - _alpha: 0.79
+    - _cansee: 10.67
+    - _cansee_1: -35.3
+    - _cansee_add: 2.21
+    - _deepth: 12
     - _emiss: -1.15
     - _far: 2.3
     - _fram: 0.35
-    - _tile: 115.1
-    - _waterAlpha: 0.65
+    - _tile: 62.6
+    - _waterAlpha: 0.585
     - _water_fram: 0.24
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 0}
+    - _Color_1: {r: 0.48584908, g: 1, b: 0.96370703, a: 0}
     - _dark_water: {r: 0, g: 0.43689036, b: 0.5377358, a: 0}
-    - _far_water: {r: 0.28515485, g: 0.571766, b: 0.6792453, a: 0}
+    - _dark_water_1: {r: 0, g: 1, b: 0.42627668, a: 0}
+    - _far_water: {r: 0.29142934, g: 0.5566038, b: 0.45202795, a: 0}
     - _fram_color: {r: 1, g: 1, b: 1, a: 0}
-    - _light_water: {r: 0.40250087, g: 0.6320754, b: 0.587721, a: 0}
+    - _light_water: {r: 0.30691525, g: 0.5377358, b: 0.49395952, a: 0}
     - _light_water_1: {r: 0, g: 0.4274441, b: 0.5283019, a: 0}
     - _light_water_2: {r: 0.44535422, g: 0.6792453, b: 0.6730248, a: 0}
     - _water_fram_Color: {r: 0.5471698, g: 0.5471698, b: 0.5471698, a: 0}
