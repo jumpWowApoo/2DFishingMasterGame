@@ -30,16 +30,16 @@ public class MissionMgr : MonoBehaviour
     /* 提交任務 */
     public void Submit(List<FishItem> delivered)
     {
-        foreach (var item in delivered)
-            InventoryMgr.Instance.RemoveFirst(item.id);
-        
-        if (Current != null && Current.rewardGold > 0 && Game.Currency.Wallet.Instance != null)
+        if (Current != null)
         {
-            Game.Currency.Wallet.Instance.Add(Current.rewardGold);
+            if (SessionRunLog.I != null)
+                SessionRunLog.I.LogMission(Current, Current.rewardGold);
+
+            if (Current.rewardGold > 0 && Game.Currency.Wallet.Instance != null)
+                Game.Currency.Wallet.Instance.Add(Current.rewardGold);
         }
 
         OnMissionComplete?.Invoke();
-
         StartCoroutine(DelaySwitch());
     }
 

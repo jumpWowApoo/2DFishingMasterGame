@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Game.Inventory;
 using Game.Currency;
-using System.Text;
+using UnityEngine.SceneManagement;
 
 public class SettlementUI : MonoBehaviour
 {
@@ -110,7 +110,9 @@ public class SettlementUI : MonoBehaviour
         InventoryMgr.Instance.Clear();
 
         // 關閉結算場景，回到遊戲
-        SettlementFlow.ReturnToGame();
+        //SettlementFlow.ReturnToGame();
+        SceneManager.LoadScene("S1");
+        
     }
 
     void CloseOnly()

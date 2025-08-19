@@ -100,9 +100,6 @@ public class MissionUI : MonoBehaviour
 
     void OnClickConfirm()
     {
-        if (SessionRunLog.I != null && missionManager != null && missionManager.Current != null)
-            SessionRunLog.I.LogMission(missionManager.Current, 0);
-        
         var delivered = slots.Select(s => s.HeldItem).Where(it => it != null).ToList();
 
         // ★ 結算同步：任務交付的每條魚，從魚箱扣掉 1
