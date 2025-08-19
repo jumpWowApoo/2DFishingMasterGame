@@ -1,5 +1,4 @@
 /* MissionUI.cs */
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -23,23 +22,72 @@ public class MissionUI : MonoBehaviour
 
     void OnEnable()
     {
+        // ★ 若沒指定，自己找一次
+        if (missionManager == null)
+            missionManager = FindObjectOfType<MissionMgr>(true);
+
         if (missionManager != null)
         {
             missionManager.OnMissionChanged += BuildUI;
             missionManager.OnMissionComplete += HandleMissionComplete;
-            if (missionManager.Current != null)
-                BuildUI(missionManager.Current);
+            // 先等一幀，讓 MissionMgr/Awake/Reset 先跑完
+            StartCoroutine(EnsureMissionAssignedThenBuild());
+        }
+        else
+        {
+            ShowUpdating();
+        }
+    }
+
+    System.Collections.IEnumerator EnsureMissionAssignedThenBuild()
+    {
+        yield return null; // 等一幀，讓 LevelInitializer/Reset 完成
+
+        if (missionManager == null)
+        {
+            ShowUpdating();
+            yield break;
+        }
+
+        if (missionManager.Current != null)
+        {
+            BuildUI(missionManager.Current);
+        }
+        else
+        {
+            // ★ 叫管理器重播一次（晚訂閱也能拿到）
+            missionManager.Rebroadcast();
+
+            // 再看一次
+            if (missionManager.Current != null) BuildUI(missionManager.Current);
+            else ShowUpdating();
         }
     }
 
     void OnDisable()
     {
-        missionManager.OnMissionChanged -= BuildUI;
-        missionManager.OnMissionComplete -= HandleMissionComplete;
+        if (missionManager != null)
+        {
+            missionManager.OnMissionChanged -= BuildUI;
+            missionManager.OnMissionComplete -= HandleMissionComplete;
+        }
+    }
+
+    void ShowUpdating()
+    {
+        panelMain.SetActive(true);
+        txtTitle.gameObject.SetActive(false);
+        txtDesc.gameObject.SetActive(false);
+        slotHolder.gameObject.SetActive(false);
+        txtUpdating.gameObject.SetActive(true);
+        if (btnConfirm) btnConfirm.interactable = false;
+        if (blocker) blocker.SetActive(true);
     }
 
     void BuildUI(MissionData data)
     {
+        if (data == null) { ShowUpdating(); return; }
+
         var existing = slotHolder.GetComponentsInChildren<MissionSlotUI>(true).ToList();
         foreach (var s in existing) { s.gameObject.SetActive(false); slots.Remove(s); }
 
@@ -78,7 +126,14 @@ public class MissionUI : MonoBehaviour
 
     void CheckFilled()
     {
-        Dictionary<string,int> counts = new();
+        if (missionManager == null || missionManager.Current == null)
+        {
+            if (btnConfirm) btnConfirm.interactable = false;
+            if (blocker) blocker.SetActive(true);
+            return;
+        }
+
+        var counts = new Dictionary<string,int>();
         foreach (var s in slots)
         {
             if (!s.HasItem) continue;
@@ -94,19 +149,18 @@ public class MissionUI : MonoBehaviour
             if (have < req.count) { ready = false; break; }
         }
 
-        btnConfirm.interactable = ready;
-        blocker.SetActive(!ready);
+        if (btnConfirm) btnConfirm.interactable = ready;
+        if (blocker) blocker.SetActive(!ready);
     }
 
     void OnClickConfirm()
     {
         var delivered = slots.Select(s => s.HeldItem).Where(it => it != null).ToList();
 
-        // ★ 結算同步：任務交付的每條魚，從魚箱扣掉 1
         foreach (var item in delivered)
             FishCrate.I.Remove(item.data, 1);
 
-        missionManager.Submit(delivered);
+        missionManager?.Submit(delivered);
     }
 
     void HandleMissionComplete()
@@ -115,7 +169,9 @@ public class MissionUI : MonoBehaviour
         txtDesc.gameObject.SetActive(false);
         slotHolder.gameObject.SetActive(false);
         txtUpdating.gameObject.SetActive(true);
+        if (btnConfirm) btnConfirm.interactable = false;
+        if (blocker) blocker.SetActive(true);
     }
 
-    public void Hide() { panelMain.SetActive(false); }
+    public void Hide() { if (panelMain) panelMain.SetActive(false); }
 }

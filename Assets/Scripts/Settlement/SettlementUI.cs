@@ -1,8 +1,9 @@
 using UnityEngine;
 using UnityEngine.UI;
-using Game.Inventory;
+using Game.Common;
 using Game.Currency;
-using UnityEngine.SceneManagement;
+
+// using UnityEngine.SceneManagement; // 不需要直接載場景，交給 SettlementFlow
 
 public class SettlementUI : MonoBehaviour
 {
@@ -13,24 +14,17 @@ public class SettlementUI : MonoBehaviour
 
     [Header("Total")] [SerializeField] Text txtTotal;
 
-    [Header("Buttons")] [SerializeField] Button btnConfirm;
-    [SerializeField] Button btnClose; // 可選
-
+    [Header("Buttons")] [SerializeField] Button btnConfirm; // 結算完成：入錢包 + 清魚箱 + 關閉面板（留在結算場景）
+    [SerializeField] Button btnClose; // 回到遊戲：切回上一個遊戲場景（重載＝初始化）
 
     void Awake()
     {
-        if (btnConfirm) btnConfirm.onClick.AddListener(OnClickConfirm);
-        if (btnClose) btnClose.onClick.AddListener(CloseOnly);
+        if (btnConfirm) btnConfirm.onClick.AddListener(OnClickConfirmAndClosePanel);
+        if (btnClose) btnClose.onClick.AddListener(OnClickReturnToGame);
     }
 
     void OnEnable()
     {
-        Rebuild();
-    }
-
-    public void Open()
-    {
-        if (panel) panel.SetActive(true);
         Rebuild();
     }
 
@@ -59,7 +53,7 @@ public class SettlementUI : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("[SettlementUI] FishCrate.I is null — 檢查是否在第一個場景且有 DontDestroyOnLoad。");
+            Debug.LogWarning("[SettlementUI] FishCrate.I is null — 檢查是否第一個場景且有 DontDestroyOnLoad。");
         }
 
         // ===== 2) 任務清單（永遠放在最後）=====
@@ -67,57 +61,53 @@ public class SettlementUI : MonoBehaviour
         if (SessionRunLog.I != null)
         {
             var list = SessionRunLog.I.GetAggregatedSnapshot();
-            var counts = SessionRunLog.I.GetCounts();      // (kinds, times)
+            var counts = SessionRunLog.I.GetCounts(); // (kinds, times)
             missionTotal = SessionRunLog.I.ComputeMissionTotal();
-
-            // 如果你想在任務區塊加一條分隔標題（可選）：
-            // var header = Instantiate(rowPrefab, listRoot);
-            // header.Bind($"— 任務完成（{counts.kinds} 種 | {counts.times} 次）—", 0, 0, 0);
 
             foreach (var m in list)
             {
-                int perReward = (m.times > 0) ? (m.rewardSum / m.times) : 0;  // 每次獎勵（目前多半為 0）
-                // 用 SettlementRow 四欄對應：標題 / 每次獎勵 / 次數 / 累計獎勵
+                int perReward = (m.times > 0) ? (m.rewardSum / m.times) : 0;
                 var row = Instantiate(rowPrefab, listRoot);
                 row.Bind(m.title, perReward, m.times, m.rewardSum);
             }
         }
         else
         {
-            // 沒有 SessionRunLog 也不影響魚顯示，只是不會有任務列
             Debug.LogWarning("[SettlementUI] SessionRunLog.I is null — 若需顯示任務完成，請加入 SessionRunLog 單例。");
         }
 
-        // ===== 3) 總金額（魚 + 任務獎勵；目前任務獎勵多為 0）=====
+        // ===== 3) 總金額（魚 + 任務獎勵）=====
         int total = totalFish + missionTotal;
         if (txtTotal) txtTotal.text = $"總金額 {total}";
 
         if (btnConfirm) btnConfirm.interactable = true;
     }
 
-
-
-    void OnClickConfirm()
+    /// <summary>
+    /// 結算完成：把錢入錢包、清魚箱，然後「關閉結算面板」但仍留在結算場景。
+    /// </summary>
+    void OnClickConfirmAndClosePanel()
     {
-        int total = FishCrate.I.ComputeTotalPrice();
+        if (FishCrate.I != null)
+        {
+            int total = FishCrate.I.ComputeTotalPrice();
+            Wallet.Instance.Add(total);
+            FishCrate.I.Clear(); // 下一輪才不會重算
+        }
 
-        // ★ 用你的錢包
-        Wallet.Instance.Add(total);
-
-        // 只結一次 → 清空魚箱
-        FishCrate.I.Clear();
-
-        InventoryMgr.Instance.Clear();
-
-        // 關閉結算場景，回到遊戲
-        //SettlementFlow.ReturnToGame();
-        SceneManager.LoadScene("S1");
-        
+        if (btnConfirm) btnConfirm.interactable = false; // 防重按
+        if (panel) panel.SetActive(false); // 關閉結算畫面（仍在結算場景）
+        Debug.Log("[SettlementUI] 結算完成，面板已關閉。");
     }
 
-    void CloseOnly()
+    /// <summary>
+    /// 回到遊戲：切回上一個遊戲場景（Single）→ 自動初始化該場景內所有物件。
+    /// </summary>
+    void OnClickReturnToGame()
     {
-        // 不結算直接返回（可移除）
-        SettlementFlow.ReturnToGame();
+        // 可選清理單局統計（若你有）
+        // if (SessionRunLog.I != null) SessionRunLog.I.Clear();
+        SceneReturnContext.Reset = ResetLevel.Soft; // 告訴 LevelInitializer：這次要重置
+        SettlementFlow.ReturnToGame(); // Single 載回上一個場景
     }
 }

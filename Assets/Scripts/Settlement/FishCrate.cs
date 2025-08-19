@@ -1,7 +1,8 @@
 using System.Collections.Generic;
 using UnityEngine;
+using Game.Common;
 
-public class FishCrate : MonoBehaviour
+public class FishCrate : MonoBehaviour, IResettable
 {
     public static FishCrate I { get; private set; }
 
@@ -14,7 +15,6 @@ public class FishCrate : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-    // 加入（釣到魚成功時）
     public void Add(FishItem item, int qty = 1) => Add(item?.data, qty);
 
     public void Add(FishData data, int qty = 1)
@@ -24,7 +24,6 @@ public class FishCrate : MonoBehaviour
         counts[data] += qty;
     }
 
-    // 扣除（任務交付 / 丟棄 / 之後 NPC 偷）
     public int Remove(FishData data, int qty = 1)
     {
         if (!data || qty <= 0 || !counts.ContainsKey(data)) return 0;
@@ -44,6 +43,10 @@ public class FishCrate : MonoBehaviour
     }
 
     public void Clear() => counts.Clear();
-
     public bool IsEmpty => counts.Count == 0;
+
+    public void ResetForNewRound(ResetLevel level)
+    {
+        Clear();
+    }
 }

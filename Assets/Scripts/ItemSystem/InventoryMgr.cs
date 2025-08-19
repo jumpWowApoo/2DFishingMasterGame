@@ -1,11 +1,12 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using Game.Common;            // ★ 新增：使用受控初始化的共用型別
 
 namespace Game.Inventory
 {
     [DefaultExecutionOrder(-100)]
-    public class InventoryMgr : MonoBehaviour
+    public class InventoryMgr : MonoBehaviour, IResettable   // ★ 新增：實作 IResettable
     {
         public static InventoryMgr Instance { get; private set; }
 
@@ -60,14 +61,21 @@ namespace Game.Inventory
         /// <summary>清空全部背包</summary>
         public void Clear()
         {
-            for (int i = 0; i < slots.Length; i++) {slots[i] = null; OnSlotChanged?.Invoke(i);}  
+            for (int i = 0; i < slots.Length; i++)
+            {
+                if (slots[i] != null)
+                {
+                    slots[i] = null;
+                    OnSlotChanged?.Invoke(i);
+                }
+            }
         }
-        
+
         public bool RemoveFirst(string itemId)
         {
             for (int i = 0; i < slots.Length; i++)
             {
-                if (slots[i] is FishItem fi && fi.id== itemId)
+                if (slots[i] is FishItem fi && fi.id == itemId)
                 {
                     slots[i] = null;
                     OnSlotChanged?.Invoke(i);
@@ -85,7 +93,15 @@ namespace Game.Inventory
                 if (slots[i] == null) return i;
             return -1;
         }
+
+        // ========================
+        // 受控初始化：新一輪要做的事
+        // ========================
+        public void ResetForNewRound(ResetLevel level)
+        {
+            // 對於背包：Soft/Hard 都清空（你也可以依 level 做差異化）
+            Clear();
+            // Debug.Log("[InventoryMgr] ResetForNewRound → cleared");
+        }
     }
-    
-    
 }

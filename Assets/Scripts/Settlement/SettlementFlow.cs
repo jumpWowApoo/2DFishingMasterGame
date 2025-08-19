@@ -1,25 +1,28 @@
-using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public static class SettlementFlow
 {
-    // 換成你的結算場景名
-    static string settlementSceneName = "GameOverScene";
-    static bool isOpen;
+    // 依你的結算場景名稱調整（你現在是 GameOverScene）
+    private static readonly string SettlementSceneName = "GameOverScene";
 
+    // 進結算前的遊戲場景名
+    private static string _prevScene;
+
+    /// <summary>切換到結算場景（Single）。</summary>
     public static void OpenSettlement()
     {
-        if (isOpen) return;
-        isOpen = true;
-        Time.timeScale = 0f; // 可選：暫停遊戲
-        SceneManager.LoadScene(settlementSceneName, LoadSceneMode.Additive);
+        _prevScene = SceneManager.GetActiveScene().name;
+        SceneManager.LoadScene(SettlementSceneName, LoadSceneMode.Single);
     }
 
+    /// <summary>從結算回到剛才的遊戲場景（Single → 重載＝初始化）。</summary>
     public static void ReturnToGame()
     {
-        if (!isOpen) return;
-        isOpen = false;
-        Time.timeScale = 1f;
-        SceneManager.UnloadSceneAsync(settlementSceneName);
+        if (string.IsNullOrEmpty(_prevScene))
+        {
+            // 後備場景名（請改成你的主要遊戲場景）
+            _prevScene = "S1";
+        }
+        SceneManager.LoadScene(_prevScene, LoadSceneMode.Single);
     }
 }
