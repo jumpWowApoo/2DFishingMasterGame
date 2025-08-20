@@ -16,6 +16,7 @@ MonoBehaviour:
   fishName: "\u7DA0\u9B5A"
   sellPrice: 60
   icon: {fileID: 21300000, guid: 5cf2975ab0b406a43944ad7af0f318da, type: 3}
+  discardSprite: {fileID: 21300000, guid: ee658043840207b4aa4f37a068f63023, type: 3}
   bigImage: {fileID: 21300000, guid: 5cf2975ab0b406a43944ad7af0f318da, type: 3}
   weight: 0.33
   description: "\u7D05\u88E1\u9B5A\u8207\u7DA0\u88E1\u9B5A\u8207\u9A62"
