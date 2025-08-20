@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: da5519e275019e54589d48549452f5b8
+guid: c0f504c8ef3f40a4ab79109039aaf52c
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
@@ -7,13 +7,8 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: X16ground_pixel_tidy
-    second: {fileID: 2100000, guid: 72ccbc580fd418047b0f06c75840496a, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: ground_pixel_tidy
-    second: {fileID: 2100000, guid: f74c092787eb79f41b68db8e29c4b8e7, type: 2}
+      name: 3D_grass_tex
+    second: {fileID: 2100000, guid: 5ef921dcbe31db54c834ad0cb4be796e, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

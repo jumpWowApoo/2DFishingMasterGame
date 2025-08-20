@@ -76,13 +76,15 @@ Material:
     - _ZWrite: 0
     - _ZWriteControl: 0
     - _alpha: 0.79
-    - _cansee: 10.67
+    - _cansee: 4.83
+    - _cansee_: 4.24
     - _cansee_1: -35.3
-    - _cansee_add: 2.21
-    - _deepth: 12
+    - _cansee_add: 1
+    - _cansee_add_1: 0
+    - _deepth: 4
     - _emiss: -1.15
     - _far: 2.3
-    - _fram: 0.35
+    - _fram: 0.38
     - _tile: 62.6
     - _waterAlpha: 0.585
     - _water_fram: 0.24
