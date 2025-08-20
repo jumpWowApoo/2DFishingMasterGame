@@ -1,4 +1,3 @@
-/* MissionUI.cs */
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -22,7 +21,6 @@ public class MissionUI : MonoBehaviour
 
     void OnEnable()
     {
-        // ★ 若沒指定，自己找一次
         if (missionManager == null)
             missionManager = FindObjectOfType<MissionMgr>(true);
 
@@ -30,7 +28,6 @@ public class MissionUI : MonoBehaviour
         {
             missionManager.OnMissionChanged += BuildUI;
             missionManager.OnMissionComplete += HandleMissionComplete;
-            // 先等一幀，讓 MissionMgr/Awake/Reset 先跑完
             StartCoroutine(EnsureMissionAssignedThenBuild());
         }
         else
@@ -41,7 +38,7 @@ public class MissionUI : MonoBehaviour
 
     System.Collections.IEnumerator EnsureMissionAssignedThenBuild()
     {
-        yield return null; // 等一幀，讓 LevelInitializer/Reset 完成
+        yield return null;
 
         if (missionManager == null)
         {
@@ -55,10 +52,7 @@ public class MissionUI : MonoBehaviour
         }
         else
         {
-            // ★ 叫管理器重播一次（晚訂閱也能拿到）
             missionManager.Rebroadcast();
-
-            // 再看一次
             if (missionManager.Current != null) BuildUI(missionManager.Current);
             else ShowUpdating();
         }
@@ -66,6 +60,9 @@ public class MissionUI : MonoBehaviour
 
     void OnDisable()
     {
+        // ★★ 關閉視窗時，先把任務格的魚退回（優先背包，背包滿則退魚箱）
+        ReturnAllSlotsBack();
+
         if (missionManager != null)
         {
             missionManager.OnMissionChanged -= BuildUI;
@@ -157,6 +154,7 @@ public class MissionUI : MonoBehaviour
     {
         var delivered = slots.Select(s => s.HeldItem).Where(it => it != null).ToList();
 
+        // 提交時同步扣 FishCrate（維持你原本邏輯）
         foreach (var item in delivered)
             FishCrate.I.Remove(item.data, 1);
 
@@ -173,5 +171,45 @@ public class MissionUI : MonoBehaviour
         if (blocker) blocker.SetActive(true);
     }
 
-    public void Hide() { if (panelMain) panelMain.SetActive(false); }
+    public void Hide()
+    {
+        // ★ 主動關面板時，也先退回
+        ReturnAllSlotsBack();
+        if (panelMain) panelMain.SetActive(false);
+    }
+
+    /// <summary>
+    /// 把所有任務格裡的魚退回：優先回背包；背包滿則退回 FishCrate；最後清空格。
+    /// </summary>
+    void ReturnAllSlotsBack()
+    {
+        // 先複製一份，避免在迴圈中改動 children
+        var allSlots = slotHolder.GetComponentsInChildren<MissionSlotUI>(true);
+        foreach (var s in allSlots)
+        {
+            if (!s || !s.HasItem) continue;
+
+            var item = s.HeldItem;
+
+            // 優先退回背包
+            int empty = InventoryMgr.Instance?.FirstEmptySlot() ?? -1;
+            if (empty >= 0)
+            {
+                InventoryMgr.Instance.AddAt(empty, item);
+            }
+            else
+            {
+                // 背包滿就退回 FishCrate（避免物品遺失/dup）
+                if (FishCrate.I != null && item != null && item.data != null)
+                    FishCrate.I.Add(item.data, 1);
+            }
+
+            // 清空 UI 格
+            s.ResetSlot(item?.id);
+        }
+
+        // 關掉確認按鈕 & 上鎖
+        if (btnConfirm) btnConfirm.interactable = false;
+        if (blocker) blocker.SetActive(true);
+    }
 }
