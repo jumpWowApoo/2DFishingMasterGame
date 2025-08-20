@@ -5,13 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b3777719-99e7-4dea-aed2-4406d48ef5f7" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/GameOverScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/GameOverScene.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/S1.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/S1.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ItemSystem/InventoryMgr.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ItemSystem/InventoryMgr.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Settlement/FishCrate.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Settlement/FishCrate.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Settlement/SettlementFlow.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Settlement/SettlementFlow.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Settlement/SettlementUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Settlement/SettlementUI.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/State/Stamina/StaminaController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/State/Stamina/StaminaController.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -145,7 +139,7 @@
       <workItem from="1754445738585" duration="22561000" />
       <workItem from="1754962375055" duration="17313000" />
       <workItem from="1755065987468" duration="10625000" />
-      <workItem from="1755566889541" duration="16077000" />
+      <workItem from="1755566889541" duration="19697000" />
     </task>
     <servers />
   </component>
@@ -173,38 +167,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/LevelInitializer.cs</url>
-          <line>9</line>
-          <properties documentPath="D:\desktop_link\GAME\2Dchill\Assets\Scripts\LevelInitializer.cs" containingFunctionPresentation="Method 'Start'">
-            <startOffsets>
-              <option value="169" />
-            </startOffsets>
-            <endOffsets>
-              <option value="170" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/LevelInitializer.cs</url>
-          <line>40</line>
-          <properties documentPath="D:\desktop_link\GAME\2Dchill\Assets\Scripts\LevelInitializer.cs" containingFunctionPresentation="Method 'Start'">
-            <startOffsets>
-              <option value="1020" />
-            </startOffsets>
-            <endOffsets>
-              <option value="1021" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

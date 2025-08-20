@@ -52,7 +52,7 @@ public class CastingState : IFishingState
             castAnimCo = fc.StartCoroutine(rodAnim.Play(RodAnimation.Clip.Cast));
         }
 
-        bob = Object.Instantiate(prefab, rodTip.position, rodTip.rotation);
+        bob = Object.Instantiate(prefab, rodTip.position,Quaternion.Euler(0f, 0f, 0f));
          bobAnim = bob.GetComponent<BobberAnimation>() ??
                       bob.GetComponentInChildren<BobberAnimation>(true);
         if (!bobAnim)
