@@ -1,4 +1,3 @@
-// SessionRunLog.cs（取代原本內容）
 using System.Collections.Generic;
 using UnityEngine;
 

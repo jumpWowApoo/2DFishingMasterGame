@@ -5,10 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b3777719-99e7-4dea-aed2-4406d48ef5f7" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.2Dchill/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.2Dchill/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/State/Fishing/BaitingState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/State/Fishing/BaitingState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/State/Fishing/FishingController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/State/Fishing/FishingController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/State/Fishing/ResultState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/State/Fishing/ResultState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/State/Fishing/CastingState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/State/Fishing/CastingState.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -143,7 +140,7 @@
       <workItem from="1754962375055" duration="17313000" />
       <workItem from="1755065987468" duration="10625000" />
       <workItem from="1755566889541" duration="19697000" />
-      <workItem from="1755655995493" duration="4682000" />
+      <workItem from="1755655995493" duration="6580000" />
     </task>
     <servers />
   </component>
@@ -176,30 +173,30 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/State/Fishing/BaitingState.cs</url>
-          <line>33</line>
-          <properties documentPath="D:\desktop_link\GAME\2Dchill\Assets\Scripts\State\Fishing\BaitingState.cs" containingFunctionPresentation="Method 'Tick'">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/State/Fishing/ReelInState.cs</url>
+          <line>54</line>
+          <properties documentPath="D:\desktop_link\GAME\2Dchill\Assets\Scripts\State\Fishing\ReelInState.cs" containingFunctionPresentation="Method 'ReelFlow'">
             <startOffsets>
-              <option value="810" />
+              <option value="1161" />
             </startOffsets>
             <endOffsets>
-              <option value="826" />
+              <option value="1162" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="4" />
+          <option name="timeStamp" value="6" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/State/Fishing/BaitingState.cs</url>
-          <line>36</line>
-          <properties documentPath="D:\desktop_link\GAME\2Dchill\Assets\Scripts\State\Fishing\BaitingState.cs" containingFunctionPresentation="Method 'Tick'">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/State/Fishing/ReelInState.cs</url>
+          <line>72</line>
+          <properties documentPath="D:\desktop_link\GAME\2Dchill\Assets\Scripts\State\Fishing\ReelInState.cs" containingFunctionPresentation="Method 'ReelFlow'">
             <startOffsets>
-              <option value="946" />
+              <option value="1697" />
             </startOffsets>
             <endOffsets>
-              <option value="947" />
+              <option value="1698" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="5" />
+          <option name="timeStamp" value="7" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
