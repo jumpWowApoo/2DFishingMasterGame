@@ -200,6 +200,25 @@ public class AudioHub : MonoBehaviour
         ApplyCue(s, cue);
     }
     
+    public void PlayUi(UiSfx key, Transform at = null)
+    {
+        if (!database) return;
+        var cue = database.Get(key);
+        if (!cue) return;
+
+        var s = GetSrc();
+        BindPos(s, at);
+        ApplyCue(s, cue);
+    }
+    
+    public void PlayCue(AudioCue cue, Transform at = null)
+    {
+        if (!cue) return;
+        var s = GetSrc();
+        BindPos(s, at);      // at 為 null → 2D；有傳 at → 3D
+        ApplyCue(s, cue);
+    }
+    
     public void ResetVolumesToDefault()
     {
         // 套用到 Mixer + 存 PlayerPrefs

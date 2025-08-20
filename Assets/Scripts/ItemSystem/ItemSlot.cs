@@ -34,6 +34,7 @@ namespace Game.UI
             // 再顯示小圖／文字
             if (item != null)
             {
+                AudioHub.I?.PlayUi(UiSfx.PutInCrate);
                 icon.enabled = true;
                 icon.sprite = item.Icon;
                 if (label)
@@ -58,6 +59,7 @@ namespace Game.UI
                 var item = InventoryMgr.Instance.Items[index];
                 if (item is FishItem fish && FishCrate.I != null)
                 {
+                    AudioHub.I?.PlayUi(UiSfx.TakeOutCrate);
                     FishCrate.I.Remove(fish.data, 1);
                 }
 
@@ -79,6 +81,7 @@ namespace Game.UI
             {
                 // 從外部（例如任務格）拖回來 → 只是回到背包，魚箱不變
                 InventoryMgr.Instance.AddAt(index, fish);
+                
             }
 
             Bind(index, fish);

@@ -37,6 +37,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Line&amp;&amp;UI/FishInfoPanel.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Line&amp;&amp;UI/GameOverUI.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Line&amp;&amp;UI/GoldText.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Line&amp;&amp;UI/SettlementUIButton.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Line&amp;&amp;UI/UIHub.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/SceneReturnContext.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Test/BlinkTester.cs" root0="FORCE_HIGHLIGHTING" />
@@ -140,7 +141,7 @@
       <workItem from="1754962375055" duration="17313000" />
       <workItem from="1755065987468" duration="10625000" />
       <workItem from="1755566889541" duration="19697000" />
-      <workItem from="1755655995493" duration="6580000" />
+      <workItem from="1755655995493" duration="12929000" />
     </task>
     <servers />
   </component>
@@ -173,30 +174,17 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/State/Fishing/ReelInState.cs</url>
-          <line>54</line>
-          <properties documentPath="D:\desktop_link\GAME\2Dchill\Assets\Scripts\State\Fishing\ReelInState.cs" containingFunctionPresentation="Method 'ReelFlow'">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/State/Fishing/CastingState.cs</url>
+          <line>71</line>
+          <properties documentPath="D:\desktop_link\GAME\2Dchill\Assets\Scripts\State\Fishing\CastingState.cs" containingFunctionPresentation="Method 'Flow'">
             <startOffsets>
-              <option value="1161" />
+              <option value="2119" />
             </startOffsets>
             <endOffsets>
-              <option value="1162" />
+              <option value="2159" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="6" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/State/Fishing/ReelInState.cs</url>
-          <line>72</line>
-          <properties documentPath="D:\desktop_link\GAME\2Dchill\Assets\Scripts\State\Fishing\ReelInState.cs" containingFunctionPresentation="Method 'ReelFlow'">
-            <startOffsets>
-              <option value="1697" />
-            </startOffsets>
-            <endOffsets>
-              <option value="1698" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="7" />
+          <option name="timeStamp" value="8" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

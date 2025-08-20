@@ -69,6 +69,7 @@ public class CastingState : IFishingState
         line.SetTargets(rodTip, fc.BobberAttachPoint);
         line.Show(true);
         yield return motion.MoveTo(bob.transform, target.position);
+        AudioHub.I.PlayBobber(BobberSfx.Splash);
         fc.SwitchTo(FishingController.StateID.Fishing);
     }
 }

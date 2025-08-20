@@ -37,6 +37,7 @@ public class MissionSlotUI : MonoBehaviour, IDropHandler, IPointerClickHandler
 
         OnItemChanged?.Invoke();
         DragInfo.CurrentDragged = null;
+        AudioHub.I.PlayUi(UiSfx.PutInCrate);
     }
 
     /* ───── 右鍵 → 退回背包 ───── */

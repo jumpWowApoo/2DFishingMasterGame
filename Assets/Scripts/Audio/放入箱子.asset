@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b0cfdbd8ee4a9b04986ec9d97a09b83c, type: 3}
-  m_Name: "\u62CB\u687F"
+  m_Name: "\u653E\u5165\u7BB1\u5B50"
   m_EditorClassIdentifier: 
   clips:
-  - {fileID: 8300000, guid: f2a1fa4f97345924f9626e498bcb3ab1, type: 3}
+  - {fileID: 8300000, guid: 4a3fdaf51b8c71c4ba8aea367e1e14d7, type: 3}
   baseVolume: 1
-  volumeRandomDb: 1
+  volumeRandomDb: 0
   basePitch: 1
   pitchRandom: 0.05
   loop: 0

@@ -19,8 +19,15 @@ MonoBehaviour:
     cue: {fileID: 11400000, guid: 247b6603b8702ab4ba143c7d247823fe, type: 2}
   - key: 0
     cue: {fileID: 11400000, guid: 014aea43140a140478bba2e7341f4ec0, type: 2}
-  bobber: []
+  bobber:
+  - key: 0
+    cue: {fileID: 11400000, guid: 10c5d9bb692312849a5758edceb84ca5, type: 2}
   creature: []
   bgm:
   - key: 1
     clip: {fileID: 8300000, guid: 0f578af4d9b6aa34786f3eb323cba810, type: 3}
+  ui:
+  - key: 5
+    cue: {fileID: 11400000, guid: 07965f3a7ddf5b14ca8e7e07c26afe76, type: 2}
+  - key: 6
+    cue: {fileID: 11400000, guid: 85cf05a7d41878e4ea4af64a2c0f1c40, type: 2}
