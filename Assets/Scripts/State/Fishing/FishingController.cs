@@ -70,7 +70,7 @@ public class FishingController : MonoBehaviour
         map[StateID.Fishing] = FishingStateRef;
 
         map[StateID.FishBite] = new FishBiteState(this, biteAutoTime, reelButton, successWindow, rodAnim);
-        map[StateID.Baiting] = new BaitingState(this, rodAnim, castButton, reelButton);
+        map[StateID.Baiting] = new BaitingState(this, rodAnim, castButton, reelButton,infoPanel);
 
 
         SwitchTo(StateID.Idle);

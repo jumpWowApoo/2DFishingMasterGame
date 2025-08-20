@@ -43,9 +43,12 @@ namespace Game.UI
 
         public void OnEndDrag(PointerEventData e)
         {
-            Destroy(dragVisual);             // 清掉拖影
-            DragInfo.CurrentDragged = null;  // 清除狀態
-            UIHub.Instance.HideFishInfo();
+            if (dragVisual) Destroy(dragVisual);
+            DragInfo.CurrentDragged = null;
+
+            // 改用會觸發 onClose 的關閉流程
+            if (UIHub.Instance != null)
+                UIHub.Instance.CloseFishInfo();
         }
     }
 }

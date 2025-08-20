@@ -28,8 +28,11 @@ public class ResultState : IFishingState
             if (fc.CurrentFishItem != null)
                 FishCrate.I.Add(fc.CurrentFishItem);
             panel.Bind(fc.CurrentFishItem);
-            OnPanelClosed();
             hub.ShowFishInfo();
+            panel.Bind(fc.CurrentFishItem, onClose: () =>
+            {
+                fc.SwitchTo(FishingController.StateID.Baiting);
+            });
         }
         else
         {
@@ -43,8 +46,7 @@ public class ResultState : IFishingState
     {
     }
 
-    public void OnExit() => hub.HideFishInfo();
-
-    /* 成功情況：面板關閉 → 回到掛餌 */
-    void OnPanelClosed() => fc.SwitchTo(FishingController.StateID.Baiting);
+    public void OnExit()
+    {
+    }
 }
