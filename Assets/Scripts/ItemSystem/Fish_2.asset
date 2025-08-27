@@ -15,9 +15,9 @@ MonoBehaviour:
   fishId: 02
   fishName: "\u7D05\u9B5A"
   sellPrice: 20
-  icon: {fileID: 21300000, guid: 7eb6ce610709f4244a31d8a89a2f1c07, type: 3}
+  icon: {fileID: 21300000, guid: d0d7dea2efd1fcd4b89fcec1b98d0f9d, type: 3}
   discardSprite: {fileID: 21300000, guid: ee658043840207b4aa4f37a068f63023, type: 3}
-  bigImage: {fileID: 21300000, guid: 513b73f82cdd42c4bbd7c54d94ab963b, type: 3}
-  weight: 0.33
+  bigImage: {fileID: 21300000, guid: 5a4fc13f0e6025b42b82273951799331, type: 3}
+  weight: 0.3
   description: "\u4E00\u7A2E\u7D05\u8272\u7684\u9B5A \u7B11\u5F97\u5F88\u8A6D\u7570"
   dragItemPrefab: {fileID: 1215925595186405354, guid: d104d6afd522ee346a71afd741decdca, type: 3}

@@ -66,6 +66,7 @@ Material:
     - _Cull: 2
     - _DstBlend: 10
     - _Float: 0.025
+    - _Float_1: 0.146
     - _QueueControl: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 0
@@ -75,18 +76,18 @@ Material:
     - _ZTest: 4
     - _ZWrite: 0
     - _ZWriteControl: 0
-    - _alpha: 0.79
+    - _alpha: 1
     - _cansee: 4.83
     - _cansee_: 4.24
     - _cansee_1: -35.3
-    - _cansee_add: 1
+    - _cansee_add: 1.85
     - _cansee_add_1: 0
-    - _deepth: 4
+    - _deepth: 4.09
     - _emiss: -1.15
     - _far: 2.3
     - _fram: 0.38
     - _tile: 62.6
-    - _waterAlpha: 0.585
+    - _waterAlpha: 1
     - _water_fram: 0.24
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 0}
