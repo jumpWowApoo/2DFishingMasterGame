@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b3777719-99e7-4dea-aed2-4406d48ef5f7" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/State/Fishing/CastingState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/State/Fishing/CastingState.cs" afterDir="false" />
-    </list>
+    <list default="true" id="b3777719-99e7-4dea-aed2-4406d48ef5f7" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -24,6 +22,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/ef8c5b14061044d1b5a7b543dce470f126e00/99/512c280a/Animation.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/ef8c5b14061044d1b5a7b543dce470f126e00/ad/825a2aee/Animator.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/3ea01e77be99618395f448b16bd7cc2bd4248bd9e5d8474964b2d97f39c5d74/System.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Audio/UIButtonSfx.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/BobberAnimation.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/ItemSystem/DragInfo.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/ItemSystem/FishDatabase.cs" root0="FORCE_HIGHLIGHTING" />
@@ -33,6 +32,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/ItemSystem/ItemSlot.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/LevelInitializer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Line&amp;&amp;UI/BigImageDragHandle.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Line&amp;&amp;UI/DiscardOverlay.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Line&amp;&amp;UI/FishDragHandle.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Line&amp;&amp;UI/FishInfoPanel.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Line&amp;&amp;UI/GameOverUI.cs" root0="FORCE_HIGHLIGHTING" />
@@ -141,7 +141,7 @@
       <workItem from="1754962375055" duration="17313000" />
       <workItem from="1755065987468" duration="10625000" />
       <workItem from="1755566889541" duration="19697000" />
-      <workItem from="1755655995493" duration="12929000" />
+      <workItem from="1755655995493" duration="25250000" />
     </task>
     <servers />
   </component>
@@ -169,25 +169,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/State/Fishing/CastingState.cs</url>
-          <line>71</line>
-          <properties documentPath="D:\desktop_link\GAME\2Dchill\Assets\Scripts\State\Fishing\CastingState.cs" containingFunctionPresentation="Method 'Flow'">
-            <startOffsets>
-              <option value="2119" />
-            </startOffsets>
-            <endOffsets>
-              <option value="2159" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="8" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
