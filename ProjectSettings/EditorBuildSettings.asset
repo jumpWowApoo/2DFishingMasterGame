@@ -11,4 +11,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/GameOverScene.unity
     guid: 68ea34cb5e887b540bb83c0535e11c95
+  - enabled: 1
+    path: Assets/Scenes/fishingGame_01.unity
+    guid: 7fa568fdebde8dc478aeb0a74ad4c5ed
+  - enabled: 1
+    path: Assets/Scenes/game_scene.unity
+    guid: 40423a37bf430d6498156fcc9afbab18
+  - enabled: 1
+    path: Assets/Scenes/StartScreen.unity
+    guid: 9eee3e84cd7c6084db54444f75797376
   m_configObjects: {}

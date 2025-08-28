@@ -1,20 +1,25 @@
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class UIHub : MonoBehaviour
 {
     public static UIHub Instance { get; private set; }
 
+    [Header("Windows")]
     [SerializeField] GameObject fishInfoWindow;
     [SerializeField] GameObject inventoryWindow;
     [SerializeField] GameObject missionWindow;
     [SerializeField] GameObject AudioWindow;
     [SerializeField] GameObject BarWindow;
 
-    [Header("拖影父層 (DragLayer)")] [SerializeField]
-    RectTransform dragLayer;
-
+    [Header("拖影父層 (DragLayer)")]
+    [SerializeField] RectTransform dragLayer;
     public RectTransform DragLayer => dragLayer;
+
+    [Header("Scenes (公開以便日後修改)")]
+    [Tooltip("返回主選單時要載入的場景名稱")]
+    public string mainMenuSceneName = "MainMenu";
 
     void Awake()
     {
@@ -23,7 +28,6 @@ public class UIHub : MonoBehaviour
             Destroy(gameObject);
             return;
         }
-
         Instance = this;
     }
 
@@ -37,9 +41,9 @@ public class UIHub : MonoBehaviour
     {
         CloseFishInfo(); // 走會觸發 onClose 的流程
         if (inventoryWindow) inventoryWindow.SetActive(false);
-        if (missionWindow) missionWindow.SetActive(false);
-        if (AudioWindow) AudioWindow.SetActive(false);
-        if (BarWindow) BarWindow.SetActive(false);
+        if (missionWindow)   missionWindow.SetActive(false);
+        if (AudioWindow)     AudioWindow.SetActive(false);
+        if (BarWindow)       BarWindow.SetActive(false);
     }
 
     public void ShowFishInfo()
@@ -73,9 +77,27 @@ public class UIHub : MonoBehaviour
     {
         if (missionWindow) missionWindow.SetActive(!missionWindow.activeSelf);
     }
-    
+
     public void ToggleAudio()
     {
         if (AudioWindow) AudioWindow.SetActive(!AudioWindow.activeSelf);
+    }
+
+    /// <summary>
+    /// 返回主選單（Single 載入）。可綁在「返回主選單」按鈕。
+    /// </summary>
+    public void ReturnToMainMenu()
+    {
+        if (string.IsNullOrEmpty(mainMenuSceneName))
+        {
+            Debug.LogError("[UIHub] mainMenuSceneName 未設定，請在 Inspector 指定主選單場景名稱。");
+            return;
+        }
+
+        // 可選：恢復時間縮放，避免從暫停狀態回主選單
+        if (Time.timeScale == 0f) Time.timeScale = 1f;
+
+        CloseAll(); // 回主選單前先把當前 UI 關掉（可選）
+        SceneManager.LoadScene(mainMenuSceneName, LoadSceneMode.Single);
     }
 }
