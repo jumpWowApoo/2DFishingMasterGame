@@ -7,9 +7,6 @@ namespace Game.Consumables.Shop
     public class CatalogItem
     {
         public ConsumableData data;
-        [Tooltip(">=0 覆蓋價格；<0 使用 data.buyPrice")]
-        public int priceOverride = -1;
-        public int Price => (priceOverride >= 0 ? priceOverride : (data != null ? data.buyPrice : 0));
     }
 
     [CreateAssetMenu(menuName="Shop/Shop Database")]

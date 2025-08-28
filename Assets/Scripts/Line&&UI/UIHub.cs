@@ -8,8 +8,8 @@ public class UIHub : MonoBehaviour
     [SerializeField] GameObject fishInfoWindow;
     [SerializeField] GameObject inventoryWindow;
     [SerializeField] GameObject missionWindow;
-    [SerializeField] GameObject shopWindow;
     [SerializeField] GameObject AudioWindow;
+    [SerializeField] GameObject BarWindow;
 
     [Header("拖影父層 (DragLayer)")] [SerializeField]
     RectTransform dragLayer;
@@ -38,8 +38,8 @@ public class UIHub : MonoBehaviour
         CloseFishInfo(); // 走會觸發 onClose 的流程
         if (inventoryWindow) inventoryWindow.SetActive(false);
         if (missionWindow) missionWindow.SetActive(false);
-        if (shopWindow) shopWindow.SetActive(false);
         if (AudioWindow) AudioWindow.SetActive(false);
+        if (BarWindow) BarWindow.SetActive(false);
     }
 
     public void ShowFishInfo()
@@ -73,12 +73,7 @@ public class UIHub : MonoBehaviour
     {
         if (missionWindow) missionWindow.SetActive(!missionWindow.activeSelf);
     }
-
-    public void ToggleShop()
-    {
-        if (shopWindow) shopWindow.SetActive(!shopWindow.activeSelf);
-    }
-
+    
     public void ToggleAudio()
     {
         if (AudioWindow) AudioWindow.SetActive(!AudioWindow.activeSelf);

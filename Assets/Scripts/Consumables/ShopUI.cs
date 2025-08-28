@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using Game.Currency; // 你的 Wallet
+using Game.Currency;
 
 namespace Game.Consumables.Shop
 {
@@ -9,9 +9,8 @@ namespace Game.Consumables.Shop
     {
         [Header("資料")]
         [SerializeField] ShopDatabase database;
-        [SerializeField] Wallet      wallet;
         [SerializeField] ConsumableBag bag;
-        [SerializeField] ShopDelivery delivery; // 分離配送職責
+        [SerializeField] ShopDelivery delivery;
 
         [Header("中欄：商品清單")]
         [SerializeField] Transform    listRoot;
@@ -25,11 +24,10 @@ namespace Game.Consumables.Shop
         [SerializeField] Button    btnMinus;
         [SerializeField] Button    btnPlus;
         [SerializeField] InputField inputQty;
-        [SerializeField] Button    btnSetQty; // 覆寫數量
+        [SerializeField] Button    btnSetQty;
 
         [Header("下欄：總金額/結帳")]
         [SerializeField] Text   txtTotal;
-        [SerializeField] Text   txtWallet;
         [SerializeField] Button btnCheckout;
         [SerializeField] Button btnClose;
 
@@ -38,6 +36,12 @@ namespace Game.Consumables.Shop
 
         ConsumableData _selected;
         int _editQty = 1;
+
+        // 事件綁定用：目前綁到的那顆 Wallet（可能是 Instance，也可能是場上找到的備援）
+        Wallet _boundWallet;
+        Wallet _fallbackWallet; // 若 Instance 為 null，會以 FindObjectOfType 找到一顆暫時用
+
+        Wallet CurrentWallet => Wallet.Instance ?? _fallbackWallet;
 
         void Awake()
         {
@@ -51,39 +55,68 @@ namespace Game.Consumables.Shop
                 else inputQty.text = _editQty.ToString();
             });
 
-            if (btnSetQty)  btnSetQty .onClick.AddListener(ApplyEditQtyToCart);
+            if (btnSetQty)   btnSetQty .onClick.AddListener(ApplyEditQtyToCart);
             if (btnCheckout) btnCheckout.onClick.AddListener(Checkout);
             if (btnClose)    btnClose   .onClick.AddListener(() => gameObject.SetActive(false));
+
+            BindWallet(); // 先嘗試綁定錢包（跨場景單例）
         }
 
         void OnEnable()
         {
-            if (wallet) wallet.OnGoldChanged += OnGoldChanged;
+            BindWallet();     // 場景切回來時再確認一次訂閱
             BuildList();
             AutoSelectFirst();
             RefreshTotals();
-            RefreshWallet();
             RefreshCheckoutInteractable();
-        }
-        void HighlightSelectedRow()
-        {
-            foreach (var r in _rows)
-                r.SetSelected(r.Data == _selected);
         }
 
         void OnDisable()
         {
-            if (wallet) wallet.OnGoldChanged -= OnGoldChanged;
+            if (_boundWallet) _boundWallet.OnGoldChanged -= OnGoldChanged;
+            _boundWallet = null;
         }
 
-        void OnGoldChanged(int _) { RefreshWallet(); RefreshCheckoutInteractable(); }
+        // ========= 綁定/更新錢包事件（無序列化欄位版） =========
+        void BindWallet()
+        {
+            // 先用單例；若暫時沒有單例，退而求其次找場上錢包物件
+            var w = Wallet.Instance;
+            if (w == null)
+            {
+                _fallbackWallet ??= FindObjectOfType<Wallet>(true);
+                w = _fallbackWallet;
+            }
+
+            // 沒有任何錢包：直接退出（UI 的可結帳狀態會被關閉）
+            if (w == null)
+            {
+                RefreshCheckoutInteractable();
+                return;
+            }
+
+            // 已經綁的是同一顆就不重複
+            if (_boundWallet == w) return;
+
+            // 換錢包時，先解除舊訂閱
+            if (_boundWallet) _boundWallet.OnGoldChanged -= OnGoldChanged;
+
+            _boundWallet = w;
+            _boundWallet.OnGoldChanged += OnGoldChanged;
+        }
+
+        void OnGoldChanged(int _)
+        {
+            RefreshCheckoutInteractable();
+        }
 
         // ===== 中欄 =====
         void BuildList()
         {
             _rows.Clear();
+            if (!listRoot) return;
             foreach (Transform c in listRoot) Destroy(c.gameObject);
-            if (database == null) return;
+            if (database == null || rowPrefab == null) return;
 
             foreach (var ci in database.items)
             {
@@ -92,6 +125,7 @@ namespace Game.Consumables.Shop
                 row.Bind(ci.data, currentQty, this);
                 _rows.Add(row);
             }
+            HighlightSelectedRow();
         }
 
         void AutoSelectFirst()
@@ -110,6 +144,7 @@ namespace Game.Consumables.Shop
                 SetDetail(null, 0, "—", "");
                 SetEditQty(1);
                 if (btnSetQty) btnSetQty.interactable = false;
+                HighlightSelectedRow();
                 return;
             }
 
@@ -120,16 +155,10 @@ namespace Game.Consumables.Shop
             SetEditQty(currentQty);
 
             if (btnSetQty) btnSetQty.interactable = true;
-            
             HighlightSelectedRow();
         }
 
-        int FindUnitPrice(ConsumableData d)
-        {
-            foreach (var ci in database.items)
-                if (ci.data == d) return ci.Price;
-            return d != null ? d.buyPrice : 0;
-        }
+        int FindUnitPrice(ConsumableData d) => (d != null) ? d.buyPrice : 0;
 
         void SetDetail(Sprite icon, int unitPrice, string name, string desc)
         {
@@ -149,19 +178,17 @@ namespace Game.Consumables.Shop
         {
             if (_selected == null) return;
             int unitPrice = FindUnitPrice(_selected);
-            _cart.SetQuantity(_selected, unitPrice, _editQty); // 覆寫（0=移除）
+            _cart.SetQuantity(_selected, unitPrice, _editQty); // 0=移除
 
             BuildList();
-            // 逐列更新數量（或直接重建清單也可）
-            foreach (var r in _rows)
-            {
-                int q = _cart.TryGet(r.Data.itemId, out var line) ? line.quantity : 0;
-                r.SetQty(q);
-            }
-            HighlightSelectedRow();
-
             RefreshTotals();
             RefreshCheckoutInteractable();
+        }
+
+        void HighlightSelectedRow()
+        {
+            foreach (var r in _rows)
+                r.SetSelected(r.Data == _selected);
         }
 
         void RefreshTotals()
@@ -169,28 +196,25 @@ namespace Game.Consumables.Shop
             if (txtTotal) txtTotal.text = $"總金額：{_cart.Total()}";
         }
 
-        void RefreshWallet()
-        {
-            if (wallet && txtWallet) txtWallet.text = $"持有金額：{wallet.Gold}";
-        }
-
         void RefreshCheckoutInteractable()
         {
             if (!btnCheckout) return;
             int total = _cart.Total();
-            bool can = !_cart.IsEmpty && wallet != null && wallet.Gold >= total;
+            var w = CurrentWallet;
+            bool can = !_cart.IsEmpty && w != null && w.Gold >= total && total > 0;
             btnCheckout.interactable = can;
         }
 
-        // ===== 結帳：一次扣錢，配送到 bag =====
+        // ===== 結帳 =====
         void Checkout()
         {
-            if (wallet == null || bag == null || delivery == null) return;
+            var w = CurrentWallet;
+            if (w == null || bag == null || delivery == null) return;
 
             int total = _cart.Total();
             if (total <= 0) return;
 
-            if (!wallet.TrySpend(total))
+            if (!w.TrySpend(total))
             {
                 Debug.Log("[Shop] 餘額不足");
                 return;
@@ -201,14 +225,9 @@ namespace Game.Consumables.Shop
 
             BuildList();
             RefreshTotals();
-            RefreshWallet();
             RefreshCheckoutInteractable();
 
             Debug.Log($"[Shop] 結帳成功，送入背包 {delivered} 件");
         }
-        
-        
     }
-    
-    
 }
